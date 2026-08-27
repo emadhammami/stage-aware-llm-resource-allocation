@@ -21,6 +21,10 @@ jobs:
           python -m pip install -e ".[dev]"
       - name: Ruff
         run: ruff check .
+      - name: Mypy
+        run: mypy
+      - name: Prepare HotpotQA
+        run: python -m benchmark.setup_hotpotqa
       - name: Pytest
         run: pytest
 
