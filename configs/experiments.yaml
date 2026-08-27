@@ -1,0 +1,34 @@
+model:
+  provider: "google"
+  name: "gemini-2.5-flash"
+  temperature: 0
+  thinking_budget: 0
+  min_output_tokens: 32
+
+provider:
+  requests_per_minute: 4
+  max_transient_retries: 6
+
+budgets:
+  required: [1000, 2000, 4000]
+  main_comparison_budget: 4000
+
+attempt_policy:
+  single_shot:
+    executor_attempts: 1
+  pec:
+    executor_attempts: 1
+  pevc:
+    executor_attempts: 1
+  evidence_gated:
+    executor_attempts: 2
+
+generation_budgets:
+  planner: 384
+  executor: 768
+  critic: 384
+
+pilot:
+  tasks: ["gcd", "breadth_first_search", "detect_cycle", "levenshtein", "quicksort"]
+  method: "evidence_gated"
+  budget: 8000

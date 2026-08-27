@@ -1,0 +1,41 @@
+schema_version: 1.0.0
+source_artifact: final_core_results.zip
+publication_commit: 93ce1a5901bf900033c8cc7c547b8e8926bb7103
+artifact_sha256: ed358013ad5e526f2456c5f63ce14019cfbae4be3810b25e154a9d271af2e330
+
+target_budgets: [1000, 2000, 4000, 8000]
+near_cap_thresholds: [0.01, 0.05, 0.10]
+policies:
+  - legacy_static
+  - greedy
+  - fixed_reserved
+  - adaptive_stage_aware
+
+fixed_reservation_fraction: 0.25
+material_action_threshold: 32
+
+canonical_replay:
+  method: evidence_gated
+  source_budget: 4000
+
+stages:
+  planner:
+    minimum_output: 32
+    soft_output: 384
+    hard_output: 768
+    legacy_output: 384
+  executor_1:
+    minimum_output: 32
+    soft_output: 768
+    hard_output: 1536
+    legacy_output: 768
+  executor_2:
+    minimum_output: 32
+    soft_output: 768
+    hard_output: 1536
+    legacy_output: 768
+  critic:
+    minimum_output: 32
+    soft_output: 384
+    hard_output: 768
+    legacy_output: 384

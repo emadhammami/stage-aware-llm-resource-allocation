@@ -1,0 +1,49 @@
+{
+  "calibration_id": "publication-resource-p90-v1",
+  "definition": {
+    "B_min_r": "sum(observed prompt tokens + frozen stage minimum output)",
+    "B_soft_r": "sum(observed prompt tokens + frozen stage soft output)",
+    "frozen_quantile": "P90",
+    "rho_r": "(actual provider cost - B_min_r) / (B_soft_r - B_min_r)",
+    "route_assumption": "historical_realized_admitted_route"
+  },
+  "high_value_handling": "unclamped",
+  "negative_handling": "clamp_to_zero_before_frozen_percentile",
+  "rho_star": 0.2963554987212276,
+  "schema_version": "1.0.0",
+  "source": {
+    "artifact": "final_core_results.zip",
+    "artifact_sha256": "ed358013ad5e526f2456c5f63ce14019cfbae4be3810b25e154a9d271af2e330",
+    "excluded_fields": [
+      "correctness",
+      "hidden_tests",
+      "success",
+      "reference_answer",
+      "final_quality"
+    ],
+    "historically_replayable_runs": 240,
+    "publication_commit": "93ce1a5901bf900033c8cc7c547b8e8926bb7103",
+    "resource_fields": [
+      "provider_input_tokens",
+      "provider_output_tokens"
+    ],
+    "total_historical_runs": 240
+  },
+  "statistics": {
+    "clamped_p90": 0.2963554987212276,
+    "count": 240,
+    "negative_count": 0,
+    "raw_max": 0.6976102941176471,
+    "raw_median": 0.11534926470588236,
+    "raw_min": 0.009510869565217392,
+    "raw_p75": 0.1876736111111111,
+    "raw_p90": 0.2963554987212276,
+    "raw_p95": 0.33973882850241544,
+    "zero_denominator_count": 0
+  },
+  "validation": {
+    "p90_sensible": true,
+    "transfer_to_local_models": "frozen rho; recompute model-native B_min/B_soft"
+  },
+  "zero_denominator_run_ids": []
+}

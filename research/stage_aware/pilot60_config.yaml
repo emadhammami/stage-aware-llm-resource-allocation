@@ -1,0 +1,59 @@
+schema_version: 1.0.0
+estimator_version: 1.0.0
+selection_seed: fllm-2026-pilot60-v1
+calibration_artifact: final_core_results.zip
+calibration_quantile: 0.90
+initial_budget_calibration: initial_budget_calibration.json
+rho_star: 0.2963554987212276
+hotpotqa_dataset: data/hotpotqa/hotpot_dev_distractor_v1.json
+fixed_reservation_fraction: 0.25
+
+models:
+  - model_id: Qwen/Qwen3-8B
+    family: qwen3
+    revision: b968826d9c46dd6066d109eabc6255188de91218
+    tokenizer_revision: b968826d9c46dd6066d109eabc6255188de91218
+    dtype: bfloat16
+    device: cuda
+    do_sample: false
+    batch_size: 1
+    num_beams: 1
+    thinking: disabled
+    license: apache-2.0
+    access: public
+  - model_id: meta-llama/Llama-3.1-8B-Instruct
+    family: llama
+    revision: 0e9e39f249a16976918f6564b8830bc894c89659
+    tokenizer_revision: 0e9e39f249a16976918f6564b8830bc894c89659
+    dtype: bfloat16
+    device: cuda
+    do_sample: false
+    batch_size: 1
+    num_beams: 1
+    thinking: not_applicable
+    license: llama3.1
+    access: manual_gated
+  - model_id: google/gemma-4-E4B-it
+    family: gemma4
+    revision: ee0ef6023621cff504d758262d4e04895a5af4a2
+    tokenizer_revision: ee0ef6023621cff504d758262d4e04895a5af4a2
+    dtype: bfloat16
+    device: cuda
+    do_sample: false
+    batch_size: 1
+    num_beams: 1
+    thinking: disabled
+    license: apache-2.0
+    access: public
+
+policies:
+  - legacy_static
+  - greedy
+  - fixed_reservation
+  - proposed
+
+tasks:
+  quixbugs: [gcd, detect_cycle, quicksort]
+  hotpotqa:
+    bridge: 5ade15ae5542990dbb2f7f4c
+    comparison: 5ae3790f5542992e3233c415

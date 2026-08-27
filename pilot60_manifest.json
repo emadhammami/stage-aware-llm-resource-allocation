@@ -1,0 +1,2201 @@
+{
+  "calibration_id": "publication-resource-p90-v1",
+  "dataset": {
+    "archive_url": "http://web.archive.org/web/20260310132809id_/http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json",
+    "name": "HotpotQA dev distractor v1",
+    "selection_seed": "fllm-2026-pilot60-v1",
+    "sha256": "4e9ecb5c8d3b719f624d66b60f8d56bf227f03914f5f0753d6fa1b359d7104ea",
+    "source_url": "http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json"
+  },
+  "execution_authorized": false,
+  "initial_budget_estimates": [
+    {
+      "b0": 1683,
+      "b_min": 1038,
+      "b_soft": 3214,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 267,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "436d558c88bdd2004851e93facd9055a7ce30bce15c4259ead5e1e146246d2b9",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 189,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9841f5699f1f3bf71991054fedc9f3d46f24c87a52f0ddfd5fb5d9a6ac1e8c79",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 258,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f3193afcdedd274351a3bdad84fdd7b8c523bff68c77f1a87694a41accee5a3a",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 196,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "25732e7d40f9111c3ea82ec0631a3627c98fbf413a039f2605952acc4d584523",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:gcd",
+      "tokenization_provenance": {
+        "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "Qwen/Qwen3-8B",
+        "model_native": true,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "thinking": "disabled",
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "tokenizer_vocabulary_size": 151669
+      }
+    },
+    {
+      "b0": 1753,
+      "b_min": 1108,
+      "b_soft": 3284,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 282,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "436d558c88bdd2004851e93facd9055a7ce30bce15c4259ead5e1e146246d2b9",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 208,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9841f5699f1f3bf71991054fedc9f3d46f24c87a52f0ddfd5fb5d9a6ac1e8c79",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 273,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f3193afcdedd274351a3bdad84fdd7b8c523bff68c77f1a87694a41accee5a3a",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 217,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "25732e7d40f9111c3ea82ec0631a3627c98fbf413a039f2605952acc4d584523",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:gcd",
+      "tokenization_provenance": {
+        "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_native": true,
+        "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "thinking": "not_applicable",
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "tokenizer_vocabulary_size": 128256
+      }
+    },
+    {
+      "b0": 1775,
+      "b_min": 1130,
+      "b_soft": 3306,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 299,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "436d558c88bdd2004851e93facd9055a7ce30bce15c4259ead5e1e146246d2b9",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 204,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9841f5699f1f3bf71991054fedc9f3d46f24c87a52f0ddfd5fb5d9a6ac1e8c79",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 285,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f3193afcdedd274351a3bdad84fdd7b8c523bff68c77f1a87694a41accee5a3a",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 214,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "25732e7d40f9111c3ea82ec0631a3627c98fbf413a039f2605952acc4d584523",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:gcd",
+      "tokenization_provenance": {
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "google/gemma-4-E4B-it",
+        "model_native": true,
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "thinking": "disabled",
+        "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "tokenizer_vocabulary_size": 262144
+      }
+    },
+    {
+      "b0": 1711,
+      "b_min": 1066,
+      "b_soft": 3242,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 274,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "7c0226261508700f4b2ee18a4e83f6d2fa8518f612638c2682f6b0de77922111",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 196,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9013161c3a7e9805b0a56f19bcc2762282d4390be354b521777e2310cdf0608a",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 265,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e9821f5633cd9fd6bc400953ded8686fa823bcb44d8ce9b3ec8ab143a6b67d2e",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 203,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "0c39707e985df6a4e96df28ab9d38de23285fba2b16ef0a438d4616b08e88e0a",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:detect_cycle",
+      "tokenization_provenance": {
+        "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "Qwen/Qwen3-8B",
+        "model_native": true,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "thinking": "disabled",
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "tokenizer_vocabulary_size": 151669
+      }
+    },
+    {
+      "b0": 1789,
+      "b_min": 1144,
+      "b_soft": 3320,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 291,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "7c0226261508700f4b2ee18a4e83f6d2fa8518f612638c2682f6b0de77922111",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 217,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9013161c3a7e9805b0a56f19bcc2762282d4390be354b521777e2310cdf0608a",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 282,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e9821f5633cd9fd6bc400953ded8686fa823bcb44d8ce9b3ec8ab143a6b67d2e",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 226,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "0c39707e985df6a4e96df28ab9d38de23285fba2b16ef0a438d4616b08e88e0a",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:detect_cycle",
+      "tokenization_provenance": {
+        "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_native": true,
+        "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "thinking": "not_applicable",
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "tokenizer_vocabulary_size": 128256
+      }
+    },
+    {
+      "b0": 1779,
+      "b_min": 1134,
+      "b_soft": 3310,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 300,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "7c0226261508700f4b2ee18a4e83f6d2fa8518f612638c2682f6b0de77922111",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 205,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "9013161c3a7e9805b0a56f19bcc2762282d4390be354b521777e2310cdf0608a",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 286,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e9821f5633cd9fd6bc400953ded8686fa823bcb44d8ce9b3ec8ab143a6b67d2e",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 215,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "0c39707e985df6a4e96df28ab9d38de23285fba2b16ef0a438d4616b08e88e0a",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:detect_cycle",
+      "tokenization_provenance": {
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "google/gemma-4-E4B-it",
+        "model_native": true,
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "thinking": "disabled",
+        "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "tokenizer_vocabulary_size": 262144
+      }
+    },
+    {
+      "b0": 1659,
+      "b_min": 1014,
+      "b_soft": 3190,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 261,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bf1464be9c2a458da91478c55349b9059e8bc4599dc6cab25276cbb32548551a",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 183,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "41a04cadb30dcef2a484eeb9317cfad6dd0057d3c40794bba6ba5327974d9f25",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 252,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "069ff526335c3d4cb1a258386c0699669cd351d3983ae653cef5bc4e4087e402",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 190,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "420b40e9069b78e023d75dea69d7d59b2e36a4e826b96b2209f07c1964a996d5",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:quicksort",
+      "tokenization_provenance": {
+        "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "Qwen/Qwen3-8B",
+        "model_native": true,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "thinking": "disabled",
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "tokenizer_vocabulary_size": 151669
+      }
+    },
+    {
+      "b0": 1737,
+      "b_min": 1092,
+      "b_soft": 3268,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 278,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bf1464be9c2a458da91478c55349b9059e8bc4599dc6cab25276cbb32548551a",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 204,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "41a04cadb30dcef2a484eeb9317cfad6dd0057d3c40794bba6ba5327974d9f25",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 269,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "069ff526335c3d4cb1a258386c0699669cd351d3983ae653cef5bc4e4087e402",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 213,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "420b40e9069b78e023d75dea69d7d59b2e36a4e826b96b2209f07c1964a996d5",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:quicksort",
+      "tokenization_provenance": {
+        "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_native": true,
+        "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "thinking": "not_applicable",
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "tokenizer_vocabulary_size": 128256
+      }
+    },
+    {
+      "b0": 1743,
+      "b_min": 1098,
+      "b_soft": 3274,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "minimum_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "optional_retry": "maximal reachable continuation",
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "critic",
+          "executor_1",
+          "executor_2",
+          "planner"
+        ],
+        "workflow": "plan -> execute -> optional retry -> verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 291,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bf1464be9c2a458da91478c55349b9059e8bc4599dc6cab25276cbb32548551a",
+          "soft_output": 384,
+          "stage_id": "critic"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 196,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "41a04cadb30dcef2a484eeb9317cfad6dd0057d3c40794bba6ba5327974d9f25",
+          "soft_output": 768,
+          "stage_id": "executor_1"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 277,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "069ff526335c3d4cb1a258386c0699669cd351d3983ae653cef5bc4e4087e402",
+          "soft_output": 768,
+          "stage_id": "executor_2"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 206,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "420b40e9069b78e023d75dea69d7d59b2e36a4e826b96b2209f07c1964a996d5",
+          "soft_output": 384,
+          "stage_id": "planner"
+        }
+      ],
+      "task_id": "quixbugs:quicksort",
+      "tokenization_provenance": {
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "google/gemma-4-E4B-it",
+        "model_native": true,
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "thinking": "disabled",
+        "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "tokenizer_vocabulary_size": 262144
+      }
+    },
+    {
+      "b0": 2091,
+      "b_min": 1607,
+      "b_soft": 3239,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 160,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "17538425c7c97680b7969f36d407ac985254b29a9ca27e5ae47b13c50f322bab",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 52,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f6efad345b9af8309b1341d7d7cd360fc1567c77764684b546cf59bbd63bfcf5",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 522,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "fb32d770f6e0542e8b43952e8e1cfe41d3c7ee876c87b92b543487319c1b00c7",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 527,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e6a15f3852648eb9fb1331607f869a1137c85243c02be66194856eecd31f5bd9",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 186,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bebb0e6c51d70f92837c9d6ecbd11811bf985e963b2f92bf432a60fb30ba10f9",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c",
+      "tokenization_provenance": {
+        "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "Qwen/Qwen3-8B",
+        "model_native": true,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "thinking": "disabled",
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "tokenizer_vocabulary_size": 151669
+      }
+    },
+    {
+      "b0": 2158,
+      "b_min": 1674,
+      "b_soft": 3306,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 179,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "17538425c7c97680b7969f36d407ac985254b29a9ca27e5ae47b13c50f322bab",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 75,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f6efad345b9af8309b1341d7d7cd360fc1567c77764684b546cf59bbd63bfcf5",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 526,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "fb32d770f6e0542e8b43952e8e1cfe41d3c7ee876c87b92b543487319c1b00c7",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 531,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e6a15f3852648eb9fb1331607f869a1137c85243c02be66194856eecd31f5bd9",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 203,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bebb0e6c51d70f92837c9d6ecbd11811bf985e963b2f92bf432a60fb30ba10f9",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c",
+      "tokenization_provenance": {
+        "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_native": true,
+        "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "thinking": "not_applicable",
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "tokenizer_vocabulary_size": 128256
+      }
+    },
+    {
+      "b0": 2116,
+      "b_min": 1632,
+      "b_soft": 3264,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 164,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "17538425c7c97680b7969f36d407ac985254b29a9ca27e5ae47b13c50f322bab",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 51,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "f6efad345b9af8309b1341d7d7cd360fc1567c77764684b546cf59bbd63bfcf5",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 528,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "fb32d770f6e0542e8b43952e8e1cfe41d3c7ee876c87b92b543487319c1b00c7",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 535,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "e6a15f3852648eb9fb1331607f869a1137c85243c02be66194856eecd31f5bd9",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 194,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "bebb0e6c51d70f92837c9d6ecbd11811bf985e963b2f92bf432a60fb30ba10f9",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c",
+      "tokenization_provenance": {
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "google/gemma-4-E4B-it",
+        "model_native": true,
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "thinking": "disabled",
+        "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "tokenizer_vocabulary_size": 262144
+      }
+    },
+    {
+      "b0": 2176,
+      "b_min": 1692,
+      "b_soft": 3324,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 316,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "013f8295ce54158e0dda4a9391ad30c34af6d821435b1a20791a7bd803a6e4cc",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 53,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "b67e903aa77ab21be3f98e30388dd9940b4d584c3b1e17d13167417a8e2be787",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 408,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "128f07e02ba02925a0de76770d538a5928fab6b6a165270df1019761f04daf21",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 413,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "5ae3623d7869917012450a3a403d26d1ee7d82e02b6ec7e3079aa9690ed2fcf7",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 342,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "aef8b1d8d186ec5e9b78b175ea786481361085b097250031dea24c73adc84f34",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415",
+      "tokenization_provenance": {
+        "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "Qwen/Qwen3-8B",
+        "model_native": true,
+        "model_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "thinking": "disabled",
+        "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "tokenizer_vocabulary_size": 151669
+      }
+    },
+    {
+      "b0": 2217,
+      "b_min": 1733,
+      "b_soft": 3365,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 323,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "013f8295ce54158e0dda4a9391ad30c34af6d821435b1a20791a7bd803a6e4cc",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 76,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "b67e903aa77ab21be3f98e30388dd9940b4d584c3b1e17d13167417a8e2be787",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 411,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "128f07e02ba02925a0de76770d538a5928fab6b6a165270df1019761f04daf21",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 416,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "5ae3623d7869917012450a3a403d26d1ee7d82e02b6ec7e3079aa9690ed2fcf7",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 347,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "aef8b1d8d186ec5e9b78b175ea786481361085b097250031dea24c73adc84f34",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415",
+      "tokenization_provenance": {
+        "chat_template_sha256": "e10ca381b1ccc5cf9db52e371f3b6651576caee0a630b452e2816b2d404d4b65",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "model_native": true,
+        "model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "thinking": "not_applicable",
+        "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "tokenizer_vocabulary_size": 128256
+      }
+    },
+    {
+      "b0": 2085,
+      "b_min": 1601,
+      "b_soft": 3233,
+      "calibration_rho": 0.2963554987212276,
+      "estimator_version": "1.0.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "route_assumptions": {
+        "branch_operator": "max",
+        "expanded_retrieval_documents": 3,
+        "initial_retrieval_documents": 2,
+        "minimum_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "shared_stage_accounting": "once_per_path",
+        "soft_maximal_path": [
+          "answer",
+          "plan",
+          "revise",
+          "terminal_verifier",
+          "verifier"
+        ],
+        "workflow": "plan -> local retrieval -> answer -> verify -> optional revise -> terminal verify"
+      },
+      "stages": [
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 296,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "013f8295ce54158e0dda4a9391ad30c34af6d821435b1a20791a7bd803a6e4cc",
+          "soft_output": 512,
+          "stage_id": "answer"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 48,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "b67e903aa77ab21be3f98e30388dd9940b4d584c3b1e17d13167417a8e2be787",
+          "soft_output": 256,
+          "stage_id": "plan"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 382,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "128f07e02ba02925a0de76770d538a5928fab6b6a165270df1019761f04daf21",
+          "soft_output": 512,
+          "stage_id": "revise"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 389,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "5ae3623d7869917012450a3a403d26d1ee7d82e02b6ec7e3079aa9690ed2fcf7",
+          "soft_output": 256,
+          "stage_id": "terminal_verifier"
+        },
+        {
+          "exact_prompt_tokens": null,
+          "minimum_output": 32,
+          "predicted_prompt_tokens": 326,
+          "prediction_error_tokens": null,
+          "prompt_provenance": "native_chat_template_tokenizer",
+          "rendered_prompt_sha256": "aef8b1d8d186ec5e9b78b175ea786481361085b097250031dea24c73adc84f34",
+          "soft_output": 256,
+          "stage_id": "verifier"
+        }
+      ],
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415",
+      "tokenization_provenance": {
+        "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "kind": "native_chat_template_tokenizer",
+        "model_id": "google/gemma-4-E4B-it",
+        "model_native": true,
+        "model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "thinking": "disabled",
+        "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+        "tokenizer_vocabulary_size": 262144
+      }
+    }
+  ],
+  "manifest_id": "fllm-2026-pilot60-open-models-v2",
+  "matrix": {
+    "models": 3,
+    "policies": 4,
+    "repetitions": 1,
+    "runs": 60,
+    "tasks": 5
+  },
+  "models": [
+    {
+      "access": "public",
+      "batch_size": 1,
+      "device": "cuda",
+      "do_sample": false,
+      "dtype": "bfloat16",
+      "family": "qwen3",
+      "license": "apache-2.0",
+      "model_id": "Qwen/Qwen3-8B",
+      "num_beams": 1,
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "thinking": "disabled",
+      "tokenizer_revision": "b968826d9c46dd6066d109eabc6255188de91218"
+    },
+    {
+      "access": "manual_gated",
+      "batch_size": 1,
+      "device": "cuda",
+      "do_sample": false,
+      "dtype": "bfloat16",
+      "family": "llama",
+      "license": "llama3.1",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "num_beams": 1,
+      "revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+      "thinking": "not_applicable",
+      "tokenizer_revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+    },
+    {
+      "access": "public",
+      "batch_size": 1,
+      "device": "cuda",
+      "do_sample": false,
+      "dtype": "bfloat16",
+      "family": "gemma4",
+      "license": "apache-2.0",
+      "model_id": "google/gemma-4-E4B-it",
+      "num_beams": 1,
+      "revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+      "thinking": "disabled",
+      "tokenizer_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2"
+    }
+  ],
+  "policies": [
+    "legacy_static",
+    "greedy",
+    "fixed_reservation",
+    "proposed"
+  ],
+  "runs": [
+    {
+      "B0": 1683,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "445a06eb50a44b5cab2c1255f2e9e5b062fcee47a51b3ac9dc8b28d74e1c9309",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::qwen3::legacy_static::r1",
+      "scientific_config_fingerprint": "204b1a45b740ee7f72d939db0bb2fc4db8d0c4e37414b72742ac348551cbbffa",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1683,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "285cad7c5baacbf65367b5bbdd1caa0884f999856f10af87fa5f7a19cdac2ed0",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::qwen3::greedy::r1",
+      "scientific_config_fingerprint": "204b1a45b740ee7f72d939db0bb2fc4db8d0c4e37414b72742ac348551cbbffa",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1683,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "3d56fb5f5165cb0ab721269ed48c3ebb2f2913574db527db428ee14a4ba93c81",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::qwen3::fixed_reservation::r1",
+      "scientific_config_fingerprint": "204b1a45b740ee7f72d939db0bb2fc4db8d0c4e37414b72742ac348551cbbffa",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1683,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "b63130e815cdca33afa1470e13589c44f206812fb8e4694d2732e8f3abe28485",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::qwen3::proposed::r1",
+      "scientific_config_fingerprint": "204b1a45b740ee7f72d939db0bb2fc4db8d0c4e37414b72742ac348551cbbffa",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1753,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "e5877913f05d3b3adde3b6d7d7ed983d9d4924899a19eed642077af06ea55721",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::llama::legacy_static::r1",
+      "scientific_config_fingerprint": "61f11d318ae23e69d131e757a1a7f33053c4dc14d30c9e0efd9cb9f3b6d9d006",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1753,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "88c5783775d0e6114ba69c4a7747821838ba89d85c84c8799c8a7d84b63c21d9",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::llama::greedy::r1",
+      "scientific_config_fingerprint": "61f11d318ae23e69d131e757a1a7f33053c4dc14d30c9e0efd9cb9f3b6d9d006",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1753,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "976263bb41227c91fa1d0541802a930c5af871f2828bb8c5700dc67551bde171",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::llama::fixed_reservation::r1",
+      "scientific_config_fingerprint": "61f11d318ae23e69d131e757a1a7f33053c4dc14d30c9e0efd9cb9f3b6d9d006",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1753,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "89af5267a51ff2e5425bc8c5674bce5a917d5d02c80585a913c182793309d205",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::llama::proposed::r1",
+      "scientific_config_fingerprint": "61f11d318ae23e69d131e757a1a7f33053c4dc14d30c9e0efd9cb9f3b6d9d006",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1775,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "7307b20345d906514fb0adece99399d5099a1a26f6fb5de1c87498b082fe1fc1",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::gemma4::legacy_static::r1",
+      "scientific_config_fingerprint": "22db176a8ba787fc09182aa1ed2ad44ab2cac9e3e71ac405b4ca7a57d6964654",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1775,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "403a7b23cab2d49237a19d0bc70fcf209b8588f3c3cc0dd9335cb62f7ac3d15f",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::gemma4::greedy::r1",
+      "scientific_config_fingerprint": "22db176a8ba787fc09182aa1ed2ad44ab2cac9e3e71ac405b4ca7a57d6964654",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1775,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "aa82f9418dede180d64695309fabb747c4ff548f7b130cf21a31b4738afb114d",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::gemma4::fixed_reservation::r1",
+      "scientific_config_fingerprint": "22db176a8ba787fc09182aa1ed2ad44ab2cac9e3e71ac405b4ca7a57d6964654",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1775,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "a846ff3dceae5105b9e88f40dd040d9179bd251fde1f769c3c87da944a701b13",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:gcd::gemma4::proposed::r1",
+      "scientific_config_fingerprint": "22db176a8ba787fc09182aa1ed2ad44ab2cac9e3e71ac405b4ca7a57d6964654",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "B0": 1711,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "6b1c721ca8cfca77e1b2373c7a6871101e1f99007acc7fd290a07aaa7428257c",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::qwen3::legacy_static::r1",
+      "scientific_config_fingerprint": "f4aef383c95b6a9385983e5fe319acb251f531835972a22af4f34b2e9792119e",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1711,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "65f7579ee1cd10a1849f41548829e8492dc16a88a2082de789436c9e77455514",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::qwen3::greedy::r1",
+      "scientific_config_fingerprint": "f4aef383c95b6a9385983e5fe319acb251f531835972a22af4f34b2e9792119e",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1711,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "f8fc485e0e15b0d9aebbf9ba936db360f3908d35b19501c5fce41f7cfa5a2412",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::qwen3::fixed_reservation::r1",
+      "scientific_config_fingerprint": "f4aef383c95b6a9385983e5fe319acb251f531835972a22af4f34b2e9792119e",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1711,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "c207432057abae5e9650f7d674e68238b82265e24ba845c55228bf0fe221e7e1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::qwen3::proposed::r1",
+      "scientific_config_fingerprint": "f4aef383c95b6a9385983e5fe319acb251f531835972a22af4f34b2e9792119e",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1789,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "9623f9168d1adc924e0349098b70743f745d3b41da3b62456fe4dffcd9adeb25",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::llama::legacy_static::r1",
+      "scientific_config_fingerprint": "5c5b7e94771c6416ab032758fdf1265e703a2789bd3905da2e6b16d7e0a17c38",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1789,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "4766ce0054611343527222a44e71e6a9aefe6da6fc051f365d92ec8b8fa4b73c",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::llama::greedy::r1",
+      "scientific_config_fingerprint": "5c5b7e94771c6416ab032758fdf1265e703a2789bd3905da2e6b16d7e0a17c38",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1789,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "80031ce9d3810a4b72a25e53f19a0466983caf351602d59490f7ede9259e5346",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::llama::fixed_reservation::r1",
+      "scientific_config_fingerprint": "5c5b7e94771c6416ab032758fdf1265e703a2789bd3905da2e6b16d7e0a17c38",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1789,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "81a3517387d8980b3cb36bc2d8826f62e5818c8bc79109f2ab755ba6268f52fe",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::llama::proposed::r1",
+      "scientific_config_fingerprint": "5c5b7e94771c6416ab032758fdf1265e703a2789bd3905da2e6b16d7e0a17c38",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1779,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "06bb593f650450c3325f19cf601862a43060bc3f6ce525d21f71203aeaa3b9bc",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::gemma4::legacy_static::r1",
+      "scientific_config_fingerprint": "1b4bbbd4abe669259324b50ef49d50695ec255a32bca4473ea5cd0461a3cd8d1",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1779,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "dd4d0582c5c08017064fd57293a066ce2e6f966ceb0e89c9a29a9c602a55ec40",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::gemma4::greedy::r1",
+      "scientific_config_fingerprint": "1b4bbbd4abe669259324b50ef49d50695ec255a32bca4473ea5cd0461a3cd8d1",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1779,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "8e04c0ffabebd7f01474c6f27d157df7506c9786348687e7cb2fad5ab638d04c",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::gemma4::fixed_reservation::r1",
+      "scientific_config_fingerprint": "1b4bbbd4abe669259324b50ef49d50695ec255a32bca4473ea5cd0461a3cd8d1",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1779,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "8669a92e33393fe2c7d40598b65a60a079f44690fc3d942054a6dbad369a68dd",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:detect_cycle::gemma4::proposed::r1",
+      "scientific_config_fingerprint": "1b4bbbd4abe669259324b50ef49d50695ec255a32bca4473ea5cd0461a3cd8d1",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "B0": 1659,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "d56788d1dd63dcf1299ca7141e01ad9b10ccc2e0693033cc80d29da5ed50473e",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::qwen3::legacy_static::r1",
+      "scientific_config_fingerprint": "de9ab24e52ed57f53c15f77b7d6aa842f98edf5111fb77782cf57324a584a2a0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1659,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "70dc93c6021a9394a0199e0db4119343a041a210f0de54941e3a688ef8d27017",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::qwen3::greedy::r1",
+      "scientific_config_fingerprint": "de9ab24e52ed57f53c15f77b7d6aa842f98edf5111fb77782cf57324a584a2a0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1659,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "61393e5cde05859f5e30b4cf5b4edd9a997a50d41e926c9b36725610ed47a2a3",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::qwen3::fixed_reservation::r1",
+      "scientific_config_fingerprint": "de9ab24e52ed57f53c15f77b7d6aa842f98edf5111fb77782cf57324a584a2a0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1659,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "b3cdedd2b66e0e680f96fee469d7cc631aa1951820e4dab51bdae3439e9175da",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::qwen3::proposed::r1",
+      "scientific_config_fingerprint": "de9ab24e52ed57f53c15f77b7d6aa842f98edf5111fb77782cf57324a584a2a0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1737,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "eab20f0d03f2838a614b028c2491e2c29b16c67826272450addfd21f202808bd",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::llama::legacy_static::r1",
+      "scientific_config_fingerprint": "19e4d7d9bad83f17438f37695ca734a72babbe0ea738c5fe8ba912c4b4c2ed9a",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1737,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "46c4ee4d71b9550d0b60ba77ff873efb8fb6a6bcd9fa94462471075edad9b1a9",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::llama::greedy::r1",
+      "scientific_config_fingerprint": "19e4d7d9bad83f17438f37695ca734a72babbe0ea738c5fe8ba912c4b4c2ed9a",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1737,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "06c4abbbad28ca4b7c1ef52c32ee0add11401e861c1ad6027c44c3e2ba94a5e0",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::llama::fixed_reservation::r1",
+      "scientific_config_fingerprint": "19e4d7d9bad83f17438f37695ca734a72babbe0ea738c5fe8ba912c4b4c2ed9a",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1737,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "41b9a7dba1a33136aee7a4a35f9d8132f402ffb27a97624f1d09d2aadc793786",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::llama::proposed::r1",
+      "scientific_config_fingerprint": "19e4d7d9bad83f17438f37695ca734a72babbe0ea738c5fe8ba912c4b4c2ed9a",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1743,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "70974f85b43d70f8d4f812a290bd10883a53d5b993da1ef12d582b550ebaf7f3",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::gemma4::legacy_static::r1",
+      "scientific_config_fingerprint": "5a46b0bb42eb2fa8b0c6ce3d91a25501a0fd0354b97802a1159e1d3c039991f0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1743,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "e40da6ecdf84c5e27fc54dcd15c58ad3c1131293a4a694c694b0855cbd12b090",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::gemma4::greedy::r1",
+      "scientific_config_fingerprint": "5a46b0bb42eb2fa8b0c6ce3d91a25501a0fd0354b97802a1159e1d3c039991f0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1743,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "5dff1ab15b8cf2875f1695cad0b189a2d3358af614ad93bd75ee1845b97f03a6",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::gemma4::fixed_reservation::r1",
+      "scientific_config_fingerprint": "5a46b0bb42eb2fa8b0c6ce3d91a25501a0fd0354b97802a1159e1d3c039991f0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 1743,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "2c94db0fc60da4de92e9ed4655f9f6a9a165ecb927dc2c0f187053e056a0ab23",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "quixbugs:quicksort::gemma4::proposed::r1",
+      "scientific_config_fingerprint": "5a46b0bb42eb2fa8b0c6ce3d91a25501a0fd0354b97802a1159e1d3c039991f0",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "B0": 2091,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "7815d21fe3832fe16cf406ae263e6a152c73f31db91ee0a4e76468155cd298be",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::qwen3::legacy_static::r1",
+      "scientific_config_fingerprint": "72cde15b2ab692d07bdeba0eb0c7ca8b7bb3219b844b6bf37c13e363e6813168",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2091,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "7da93c84c8a8b35948febf3b017b2d7eced48872b3a04dc82e14f826354669bc",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::qwen3::greedy::r1",
+      "scientific_config_fingerprint": "72cde15b2ab692d07bdeba0eb0c7ca8b7bb3219b844b6bf37c13e363e6813168",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2091,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "27829351d87bf9bd852fd1d067538741322e94e6ef7a46480cb50482bbdbe2d7",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::qwen3::fixed_reservation::r1",
+      "scientific_config_fingerprint": "72cde15b2ab692d07bdeba0eb0c7ca8b7bb3219b844b6bf37c13e363e6813168",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2091,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "4becdccd68673db6d850c23ae383843bb839d0e6799d81ba3ad582ad7a680d7e",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::qwen3::proposed::r1",
+      "scientific_config_fingerprint": "72cde15b2ab692d07bdeba0eb0c7ca8b7bb3219b844b6bf37c13e363e6813168",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2158,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "ed8fa21366421a19e9fa0f16b45d60bb46b3c0b0478a5a3847f53938e3a34d42",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::llama::legacy_static::r1",
+      "scientific_config_fingerprint": "ad12faf7c0f2247e3b98466351ee8761f7787532b4b803d87188db4cb48e07bf",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2158,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "39bb225df551d496e66229493410efa8dc8ecfa64776f2399fc1ae95fb2f3e37",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::llama::greedy::r1",
+      "scientific_config_fingerprint": "ad12faf7c0f2247e3b98466351ee8761f7787532b4b803d87188db4cb48e07bf",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2158,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "326c96994ee9175e3d9340a960b5407e183ef06ceb37764a4ee8ebed186886b5",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::llama::fixed_reservation::r1",
+      "scientific_config_fingerprint": "ad12faf7c0f2247e3b98466351ee8761f7787532b4b803d87188db4cb48e07bf",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2158,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "393bb308ee4aeb56e681f5289df5b6c6bf48797d890e73e95666030634a3e263",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::llama::proposed::r1",
+      "scientific_config_fingerprint": "ad12faf7c0f2247e3b98466351ee8761f7787532b4b803d87188db4cb48e07bf",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2116,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "e34cfdf3f01783891310729c5d79aceeb10a95e5d35cec82647fe6188ea5689b",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::gemma4::legacy_static::r1",
+      "scientific_config_fingerprint": "231850025be00e10b7ac1ed072c277940c86210f1dc5ccff92f9205707505000",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2116,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "3c9a552c90b5763d3114664651ea589f1b622cb5899420bd290c539c542a4c01",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::gemma4::greedy::r1",
+      "scientific_config_fingerprint": "231850025be00e10b7ac1ed072c277940c86210f1dc5ccff92f9205707505000",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2116,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "d2228111367382ddc02581700cf6c1c91c93e3014e0ffff73ed03585d5b9158a",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::gemma4::fixed_reservation::r1",
+      "scientific_config_fingerprint": "231850025be00e10b7ac1ed072c277940c86210f1dc5ccff92f9205707505000",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2116,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "b87fb390b1e94ed0efdbd05794f164815929918e19901414817d6a086200ce3c",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ade15ae5542990dbb2f7f4c::gemma4::proposed::r1",
+      "scientific_config_fingerprint": "231850025be00e10b7ac1ed072c277940c86210f1dc5ccff92f9205707505000",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "B0": 2176,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "afbb5baa0f0effb867f16196622d2ee2764697e882bfabea280f32d9057e8e03",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::qwen3::legacy_static::r1",
+      "scientific_config_fingerprint": "0940e33276bda40c6c28a10299cd560c72966d49558ea660d2765101f2337594",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2176,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "b48f5a5f92ab325b72ad20a9083a44a5e58f916f11bb5f9c7fe6ee6332ef7b3e",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::qwen3::greedy::r1",
+      "scientific_config_fingerprint": "0940e33276bda40c6c28a10299cd560c72966d49558ea660d2765101f2337594",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2176,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "39d19018a350f9f8ecc24ea171b89b5fe9dcb43a3a1674927f118359da6b858f",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::qwen3::fixed_reservation::r1",
+      "scientific_config_fingerprint": "0940e33276bda40c6c28a10299cd560c72966d49558ea660d2765101f2337594",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2176,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "f924e0cb7a8ce9ad1cc90de925ddb1afbf12be3dd7c41e490f791ba55f952897",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::qwen3::proposed::r1",
+      "scientific_config_fingerprint": "0940e33276bda40c6c28a10299cd560c72966d49558ea660d2765101f2337594",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2217,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "09e83c1a14feeeb613c4c71cfb5b6af327076fbf92b5f2aa900d627e07651cac",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::llama::legacy_static::r1",
+      "scientific_config_fingerprint": "a1e9d357d57789b6f15131a609ff09318ba11ce7f11280b3f0dfb059b644eb3c",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2217,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "007a67eb9d2dccc6d6e8f9116bcde277607e04faeb86cdd2e6a162acd94fb23d",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::llama::greedy::r1",
+      "scientific_config_fingerprint": "a1e9d357d57789b6f15131a609ff09318ba11ce7f11280b3f0dfb059b644eb3c",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2217,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "664f144efa8156dda60b12c5759da4d8d20bd9d68941e0646805c74993c4f87d",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::llama::fixed_reservation::r1",
+      "scientific_config_fingerprint": "a1e9d357d57789b6f15131a609ff09318ba11ce7f11280b3f0dfb059b644eb3c",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2217,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "5d65e268e80ddb918d7faf0f5ae8e1d349528c60a1ba0bf98a0d13fd1e41ab01",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::llama::proposed::r1",
+      "scientific_config_fingerprint": "a1e9d357d57789b6f15131a609ff09318ba11ce7f11280b3f0dfb059b644eb3c",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2085,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "e803f6871dff80b9b6b06ca879f1d29cae3360c630eb5dc538913142e49fdc4d",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::gemma4::legacy_static::r1",
+      "scientific_config_fingerprint": "14804ca30cf7218591cd57eb7ed6c9149750ee7056514a4336d09d356e82e3b5",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2085,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "a514e51242bd194ef3e98db442e0bc497c8334b16e93cfc32324da33cc9d997b",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "greedy",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::gemma4::greedy::r1",
+      "scientific_config_fingerprint": "14804ca30cf7218591cd57eb7ed6c9149750ee7056514a4336d09d356e82e3b5",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2085,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "f53b12108089a08a1b5d92de9d32794cdb76ab4376a7a2fa5cc3499d78ed90c8",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "fixed_reservation",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::gemma4::fixed_reservation::r1",
+      "scientific_config_fingerprint": "14804ca30cf7218591cd57eb7ed6c9149750ee7056514a4336d09d356e82e3b5",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    },
+    {
+      "B0": 2085,
+      "fixed_reservation_fraction": 0.25,
+      "full_config_fingerprint": "f0e5e1e5fe1b0dc58d5cc92b46c315c26961573a0f565270a478d568b691eed3",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "prompt_and_route_version": "pilot60-v1",
+      "repetition": 1,
+      "rho_star": 0.2963554987212276,
+      "run_id": "hotpotqa:5ae3790f5542992e3233c415::gemma4::proposed::r1",
+      "scientific_config_fingerprint": "14804ca30cf7218591cd57eb7ed6c9149750ee7056514a4336d09d356e82e3b5",
+      "selection_seed": "fllm-2026-pilot60-v1",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "tasks": [
+    {
+      "benchmark": "quixbugs",
+      "task_id": "quixbugs:gcd"
+    },
+    {
+      "benchmark": "quixbugs",
+      "task_id": "quixbugs:detect_cycle"
+    },
+    {
+      "benchmark": "quixbugs",
+      "task_id": "quixbugs:quicksort"
+    },
+    {
+      "benchmark": "hotpotqa",
+      "question_type": "bridge",
+      "task_id": "hotpotqa:5ade15ae5542990dbb2f7f4c"
+    },
+    {
+      "benchmark": "hotpotqa",
+      "question_type": "comparison",
+      "task_id": "hotpotqa:5ae3790f5542992e3233c415"
+    }
+  ]
+}
