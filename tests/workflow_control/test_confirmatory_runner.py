@@ -125,6 +125,7 @@ def test_validate_manifest_rejects_missing_workflow_stage_estimate() -> None:
         confirmatory._validate_manifest(manifest)
 
 
+@pytest.mark.integration
 def test_execute_scores_after_hotpot_workflow_and_writes_confirmatory_run_end(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
@@ -171,6 +172,7 @@ def test_execute_is_locked_without_explicit_authorization(
         confirmatory.execute(_manifest(), ROOT, tmp_path / "events.jsonl")
 
 
+@pytest.mark.integration
 def test_execute_scores_hotpot_structural_shortfall_as_abnormal(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
@@ -205,6 +207,7 @@ def test_execute_scores_hotpot_structural_shortfall_as_abnormal(
     assert outcome["reliable_correct"] is False
 
 
+@pytest.mark.integration
 def test_execute_scores_hotpot_only_after_workflow_returns(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,

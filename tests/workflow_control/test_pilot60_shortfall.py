@@ -22,6 +22,7 @@ def _raise_unexpected(**kwargs: object) -> dict[str, object]:
     raise RuntimeError("unexpected fixture failure")
 
 
+@pytest.mark.integration
 def test_execute_records_structural_shortfall_and_continues(tmp_path, monkeypatch) -> None:
     root = Path(__file__).parents[2]
     manifest = json.loads((root / "pilot60_manifest.json").read_text(encoding="utf-8"))

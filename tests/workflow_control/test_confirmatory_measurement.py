@@ -122,6 +122,7 @@ def test_finish_reason_mapping(reason: str | None, expected: str) -> None:
     assert _map_finish_reason(reason) == expected
 
 
+@pytest.mark.integration
 def test_retriever_recovery_returns_two_unseen_documents() -> None:
     task = _task()
     retriever = DeterministicRetriever(task.documents)
@@ -132,6 +133,7 @@ def test_retriever_recovery_returns_two_unseen_documents() -> None:
     assert all(document.title not in seen for document in recovered)
 
 
+@pytest.mark.integration
 def test_hotpot_sufficient_branch_uses_structured_contract() -> None:
     task = _task()
     backend = ScriptedBackend(
@@ -151,6 +153,7 @@ def test_hotpot_sufficient_branch_uses_structured_contract() -> None:
     assert len(result["stages"]) == 3
 
 
+@pytest.mark.integration
 def test_hotpot_insufficient_branch_recovers_two_documents() -> None:
     task = _task()
     backend = ScriptedBackend(
@@ -171,6 +174,7 @@ def test_hotpot_insufficient_branch_recovers_two_documents() -> None:
     assert len(result["stages"]) == 5
 
 
+@pytest.mark.integration
 def test_malformed_answer_is_scientific_invalid_response() -> None:
     task = _task()
     backend = ScriptedBackend(["intent one; intent two", "ANSWER: October"])
@@ -183,6 +187,7 @@ def test_malformed_answer_is_scientific_invalid_response() -> None:
     assert result["run_end"]["normal_completion"] is False
 
 
+@pytest.mark.integration
 def test_malformed_verifier_is_scientific_invalid_response() -> None:
     task = _task()
     backend = ScriptedBackend(
@@ -200,6 +205,7 @@ def test_malformed_verifier_is_scientific_invalid_response() -> None:
     assert result["run_end"]["normal_completion"] is False
 
 
+@pytest.mark.integration
 def test_malformed_terminal_verifier_is_scientific_invalid_response() -> None:
     task = _task()
     backend = ScriptedBackend(

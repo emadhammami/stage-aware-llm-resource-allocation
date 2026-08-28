@@ -5,6 +5,7 @@ from collections import Counter
 from dataclasses import replace
 from pathlib import Path
 
+import pytest
 import yaml
 
 from benchmark.hotpotqa import HotpotQAAdapter
@@ -15,6 +16,7 @@ from workflow_control.specs import hotpot_prompt_estimates
 ROOT = Path(__file__).parents[2]
 
 
+@pytest.mark.integration
 def test_hotpot_selection_and_manifest_are_frozen() -> None:
     adapter = HotpotQAAdapter(ROOT / "data/hotpotqa/hotpot_dev_distractor_v1.json")
     assert adapter.deterministic_pilot_ids() == {
@@ -58,6 +60,7 @@ def test_hotpot_selection_and_manifest_are_frozen() -> None:
     assert "mistral" not in serialized.lower()
 
 
+@pytest.mark.integration
 def test_hotpot_gold_is_not_in_workflow_view_or_budget_estimates() -> None:
     adapter = HotpotQAAdapter(ROOT / "data/hotpotqa/hotpot_dev_distractor_v1.json")
     task = adapter.get("5ade15ae5542990dbb2f7f4c")

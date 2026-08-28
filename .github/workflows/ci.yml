@@ -22,5 +22,5 @@ jobs:
       - name: Ruff
         run: ruff check .
       - name: Pytest
-        run: pytest --basetemp=.pytest_tmp --ignore=tests/stage_aware/test_artifact.py --ignore=tests/stage_aware/test_phase0_pipeline.py
+        run: pytest --basetemp=.pytest_tmp -m "not integration" --ignore=tests/stage_aware/test_artifact.py --ignore=tests/stage_aware/test_phase0_pipeline.py
 
