@@ -1,13 +1,16 @@
 from __future__ import annotations
 
-from pathlib import Path
-
-from benchmark.hotpotqa import HotpotQAAdapter
+from benchmark.hotpotqa import HotpotTask
 from benchmark.outcomes import score_hotpot_result, score_quixbugs_result
 
-ROOT = Path(__file__).parents[2]
-TASK = HotpotQAAdapter(ROOT / "data/hotpotqa/hotpot_dev_distractor_v1.json").get(
-    "5ade15ae5542990dbb2f7f4c"
+TASK = HotpotTask(
+    task_id="fixture-hotpot",
+    question="In which month did the event occur?",
+    question_type="bridge",
+    level="easy",
+    documents=(),
+    _gold_answer="October",
+    _gold_supporting_facts=(),
 )
 
 

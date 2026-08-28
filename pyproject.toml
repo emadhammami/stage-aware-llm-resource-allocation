@@ -23,6 +23,7 @@ dev = [
     "pandas-stubs>=2.2",
     "pytest>=8.0",
     "ruff>=0.6",
+    "safetensors>=0.8.0",
     "types-PyYAML>=6.0",
 ]
 local-models = [

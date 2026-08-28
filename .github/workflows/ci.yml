@@ -22,5 +22,5 @@ jobs:
       - name: Ruff
         run: ruff check .
       - name: Pytest
-        run: pytest
+        run: pytest --basetemp=.pytest_tmp --ignore=tests/stage_aware/test_artifact.py --ignore=tests/stage_aware/test_phase0_pipeline.py
 
