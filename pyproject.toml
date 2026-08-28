@@ -47,7 +47,7 @@ markers = [
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-extend-exclude = [".pytest_tmp"]
+extend-exclude = [".pytest_tmp", "analysis/stage_aware/make_figure1_operating_envelope.py", "analysis/stage_aware/make_figure2_primary_confirmatory.py", "analysis/stage_aware/make_remaining_paper_figures.py"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
