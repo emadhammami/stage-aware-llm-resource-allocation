@@ -46,10 +46,11 @@ class FakeProcessor:
         )
 
 
-def test_windows_gemma4_selects_pread() -> None:
-    assert _safetensors_loader_details("gemma4", platform_name="win32") == (
+@pytest.mark.parametrize("family", ["gemma4", "qwen3", "llama"])
+def test_windows_pilot_models_select_pread(family: str) -> None:
+    assert _safetensors_loader_details(family, platform_name="win32") == (
         "pread",
-        "windows_gemma4_pread",
+        "windows_safetensors_pread",
     )
 
 
@@ -57,8 +58,9 @@ def test_windows_gemma4_selects_pread() -> None:
     ("family", "platform_name"),
     [
         ("gemma4", "linux"),
-        ("qwen3", "win32"),
-        ("llama", "win32"),
+        ("qwen3", "linux"),
+        ("llama", "linux"),
+        ("mistral", "win32"),
     ],
 )
 def test_pread_is_not_selected_for_other_platform_or_family(
@@ -155,7 +157,7 @@ def test_non_pread_paths_do_not_override_safe_open(family: str) -> None:
             assert modeling_utils.safe_open is original_safe_open
             return source
 
-    platform_name = "linux" if family == "gemma4" else "win32"
+    platform_name = "linux"
     _load_model_from_pretrained(
         SuccessfulModel,
         "fixture",
@@ -202,7 +204,7 @@ def test_gemini_provider_accounting_compatibility() -> None:
     assert usage.input_tokens == 11
     assert usage.output_tokens == 7
     assert usage.total_tokens == 18
-    assert usage.mapped_finish_class == "stop"
+    assert usage.mapped_finish_class == "natural"
 
 
 def test_gemini_estimated_accounting_is_rejected() -> None:

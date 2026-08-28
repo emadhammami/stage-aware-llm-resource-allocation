@@ -1,0 +1,847 @@
+{
+  "dataset_sha256": "4e9ecb5c8d3b719f624d66b60f8d56bf227f03914f5f0753d6fa1b359d7104ea",
+  "eligible_population": 7343,
+  "execution": {
+    "model_generations": false,
+    "model_weights_loaded": false,
+    "tokenizer_only": true
+  },
+  "information_isolation": {
+    "accuracy_used": false,
+    "exact_match_used": false,
+    "pilot60_outcomes_used": false,
+    "supporting_facts_used": false,
+    "token_f1_used": false,
+    "verifier_outcome_used": false
+  },
+  "protocol": "confirmatory-v1",
+  "schema_version": "1.0.0",
+  "selected_ids_sha256": "16909b30188eb203e56daf5a9f2b9f3789e329f0aa23362890d3c137e3eb3524",
+  "selected_tasks": [
+    {
+      "context_lexical_tokens": 645,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "001230c7e9240b6bf6c166aa55f65b2871c3c2f74bcf0652f63f2024bc3f87b9",
+      "stratum_rank": 1,
+      "task_id": "5abee2df5542994516f4546a"
+    },
+    {
+      "context_lexical_tokens": 706,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "00599b34df9f6bc769e22c8e133013b7e95933804b28037c998138a124609123",
+      "stratum_rank": 2,
+      "task_id": "5ab8854555429934fafe6e0c"
+    },
+    {
+      "context_lexical_tokens": 730,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "0074c97c8c12c4c0dea020f56737f316244c8c90a4dd94088dc7cccf846e7213",
+      "stratum_rank": 3,
+      "task_id": "5a78d06355429974737f78b4"
+    },
+    {
+      "context_lexical_tokens": 768,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "009c06ef3a288b411851ffce5d2aaa900df23680b4aee41031c8e429fb8c7174",
+      "stratum_rank": 4,
+      "task_id": "5ab51dbd5542996a3a96a023"
+    },
+    {
+      "context_lexical_tokens": 615,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "009d4db0805bcd1d0dc97d782fd14ead6866b7e843e13a52e2c721d20d3a8585",
+      "stratum_rank": 5,
+      "task_id": "5a7ef6b35542994959419a94"
+    },
+    {
+      "context_lexical_tokens": 693,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "00cc401e2bc292855f5657c0530cb848ec484aab8ca5f11e590ba3ce8bb2d0b6",
+      "stratum_rank": 6,
+      "task_id": "5ae2bb545542992decbdcd88"
+    },
+    {
+      "context_lexical_tokens": 745,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "00d8fab40de1e25d8e74eabad5c203ffe8ba0a9036e0c2d6f801ac7e3d1341a3",
+      "stratum_rank": 7,
+      "task_id": "5adec96e5542995534e8c712"
+    },
+    {
+      "context_lexical_tokens": 690,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "00df090135a73a53011c0418ae677bce7b40d64ce718cce073eb9d1a8645efdb",
+      "stratum_rank": 8,
+      "task_id": "5a721b9055429971e9dc9277"
+    },
+    {
+      "context_lexical_tokens": 693,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "00fe7ae6295a9d0877254346335344b2c299a95b39268a051da4ad86953468fb",
+      "stratum_rank": 9,
+      "task_id": "5a810221554299260e20a1f9"
+    },
+    {
+      "context_lexical_tokens": 362,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "011f5cccbecad417575e569384f5c206807e3f92a0317f5a9d2dd8227f3ad2e6",
+      "stratum_rank": 10,
+      "task_id": "5a73073d55429901807daf69"
+    },
+    {
+      "context_lexical_tokens": 336,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "0186a0129f1dfa9ab7c0b53a711bc8426b053f0b41105a1fa9448c51033535d5",
+      "stratum_rank": 11,
+      "task_id": "5a7cb993554299452d57b9c2"
+    },
+    {
+      "context_lexical_tokens": 514,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "01878d5a008aeaf311f4ff01ed93309665d140d41246f2f6582a4641fc91ce45",
+      "stratum_rank": 12,
+      "task_id": "5a7e1cd955429965cec5ea76"
+    },
+    {
+      "context_lexical_tokens": 731,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "019a34ce55089616e4fc2e628884c515403c7f178fe460332dd3ebfc4f343ffb",
+      "stratum_rank": 13,
+      "task_id": "5a73b0975542992d56e7e387"
+    },
+    {
+      "context_lexical_tokens": 762,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "019e73f42046ee4a238d313a4e8794c1a0a5da8bfb46b915d1cf498aa8661a05",
+      "stratum_rank": 14,
+      "task_id": "5a8b6d885542997f31a41d25"
+    },
+    {
+      "context_lexical_tokens": 639,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "01d8d0bdf837ce7c83c1b07ae315d6eba59ba93405a1be8cc3123a03da56e90b",
+      "stratum_rank": 15,
+      "task_id": "5a845b2d5542996488c2e520"
+    },
+    {
+      "context_lexical_tokens": 377,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "0223d569b00a511929ad53f13918465df7a4330c2c1e328681e8c48da082a803",
+      "stratum_rank": 16,
+      "task_id": "5abd83775542993062266cb7"
+    },
+    {
+      "context_lexical_tokens": 749,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "0279b8925e448a80d99bec74d205d892d24b716fbe085234aa45e1809a1a7da5",
+      "stratum_rank": 17,
+      "task_id": "5ac2943a55429921a00aafce"
+    },
+    {
+      "context_lexical_tokens": 680,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "028c5dd7ed627eff3f891cda45b3556d9d8e286538bcd976c53d986a2867103c",
+      "stratum_rank": 18,
+      "task_id": "5abc40835542993a06baf8ba"
+    },
+    {
+      "context_lexical_tokens": 683,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "0294b93added1fb91f7fa26777c1094ae2d68a66f3caf644ed2c9117219fc2ca",
+      "stratum_rank": 19,
+      "task_id": "5ac05fb55542997d64295a0b"
+    },
+    {
+      "context_lexical_tokens": 706,
+      "quartile": 1,
+      "question_type": "bridge",
+      "selection_sha256": "02c34b6f5a4cf30863776711efc75807935aea4d2da4fd608b2dfdabbab91c72",
+      "stratum_rank": 20,
+      "task_id": "5ae2b770554299495565db0f"
+    },
+    {
+      "context_lexical_tokens": 847,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "000e41364d2b53ce0c481c8e9a11cb99a39550f6529d25c3c9ce68ef41602331",
+      "stratum_rank": 1,
+      "task_id": "5ac0dcf25542996f0d89cc2c"
+    },
+    {
+      "context_lexical_tokens": 844,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "00192990e78e1b0a32b7dc3fe3736836c9626ea081bbdfbf0e193cb8bf48de96",
+      "stratum_rank": 2,
+      "task_id": "5adc0e395542996e685252c1"
+    },
+    {
+      "context_lexical_tokens": 883,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "0057a25fcd4c4d820395d0345145493d94d6905b8f18436aeaf519e3bea35442",
+      "stratum_rank": 3,
+      "task_id": "5add67915542992200553af8"
+    },
+    {
+      "context_lexical_tokens": 785,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "006f5f634238ce96783a7bff30a3f7d7ff81ff25343c1d41648f402a7c246f11",
+      "stratum_rank": 4,
+      "task_id": "5adf0ae45542992d7e9f9286"
+    },
+    {
+      "context_lexical_tokens": 827,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "008f888bc9c1e520dcd1a5115c9e31c2e5ae6959af409074d187a49391045ef3",
+      "stratum_rank": 5,
+      "task_id": "5a8a5c0d554299515336137b"
+    },
+    {
+      "context_lexical_tokens": 840,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "00aa4f095d483d936b159f2573fa1dd02611ee02b2c02ae1681038a1016ae57c",
+      "stratum_rank": 6,
+      "task_id": "5ae7954b554299540e5a5620"
+    },
+    {
+      "context_lexical_tokens": 913,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "00aa9e41ef5184ef6033849d22fb4f4e4ea3a4385508502636c01578a01ac63b",
+      "stratum_rank": 7,
+      "task_id": "5a86681c5542991e77181644"
+    },
+    {
+      "context_lexical_tokens": 823,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "00e9ca09bbefc9e742740ff42766271c4903cc70b9a6e91800476d99e8403b28",
+      "stratum_rank": 8,
+      "task_id": "5a7313865542994cef4bc442"
+    },
+    {
+      "context_lexical_tokens": 917,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "014c584b525b13f1820650fd1918f2521cc3c32ebcf6b6ea04efa0e6715086fc",
+      "stratum_rank": 9,
+      "task_id": "5a8ac0595542992d82986f6c"
+    },
+    {
+      "context_lexical_tokens": 848,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "015b0ef544bb25b8e0af645f5233fc2bdd8503d006b655b6b4110e9274f8cafc",
+      "stratum_rank": 10,
+      "task_id": "5a84f4c75542997175ce1f31"
+    },
+    {
+      "context_lexical_tokens": 902,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "01845a606353178637d75260bc8b33c43aea704f6dd9e1bf2167993186dbbc7b",
+      "stratum_rank": 11,
+      "task_id": "5a90c8165542995651fb51ee"
+    },
+    {
+      "context_lexical_tokens": 818,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "01befa6789d01a5eaf948bca05e6b198eda3fd3eb8c844c5a50e126df1b3ef62",
+      "stratum_rank": 12,
+      "task_id": "5abe369055429976d4830a8a"
+    },
+    {
+      "context_lexical_tokens": 856,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "01d280b3fff1081a25f100b9e627543789a35b93133ce803749b9043c7fb7876",
+      "stratum_rank": 13,
+      "task_id": "5add56a85542992200553abe"
+    },
+    {
+      "context_lexical_tokens": 817,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "02202dc94390d25e12923d8dbe1382202f315e997514c1645c6e7cdaec20cd55",
+      "stratum_rank": 14,
+      "task_id": "5a87964c5542996e4f30885f"
+    },
+    {
+      "context_lexical_tokens": 882,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "025c5b02f3359443a73bbb543410d4bb7904fcf1b17e87fb5cde416d4498107c",
+      "stratum_rank": 15,
+      "task_id": "5ae236b2554299495565da3e"
+    },
+    {
+      "context_lexical_tokens": 829,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "028b2ac14cf73c6ea6b2acaf065194f9466db4e7cdb0126981ea098bcb451f5a",
+      "stratum_rank": 16,
+      "task_id": "5a8af3b155429950cd6afc2c"
+    },
+    {
+      "context_lexical_tokens": 819,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "0293e7a589c9f96c1289ff41d580f5837770d841e880d5aa5dc724df169d725c",
+      "stratum_rank": 17,
+      "task_id": "5ae7d0675542994a481bbdf2"
+    },
+    {
+      "context_lexical_tokens": 891,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "034d0ad0ac3aa234edcc3e4c58b307e9cdae6c66f12a417640890a237895a7a2",
+      "stratum_rank": 18,
+      "task_id": "5ae780a55542997b22f6a79f"
+    },
+    {
+      "context_lexical_tokens": 871,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "0385c12d299c17c5b2537c15571b4e0b7edca7eca97536baccc6fd04f050ae6c",
+      "stratum_rank": 19,
+      "task_id": "5a75092b55429916b0164242"
+    },
+    {
+      "context_lexical_tokens": 841,
+      "quartile": 2,
+      "question_type": "bridge",
+      "selection_sha256": "03df3a4cb27c3fa8ace2d7ab38cf60f823e247ce06ce4f2249db03bca3ff0c4e",
+      "stratum_rank": 20,
+      "task_id": "5ab850795542990e739ec8bd"
+    },
+    {
+      "context_lexical_tokens": 931,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "003eece64d063027ded6ca239e0f56e18b1bb13778cddd2f010224c2b97a00a1",
+      "stratum_rank": 1,
+      "task_id": "5abe86365542993f32c2a14d"
+    },
+    {
+      "context_lexical_tokens": 1046,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "008dad776c7b8e44df7da32ed16e91000213b727b70824eed531579f3b854827",
+      "stratum_rank": 2,
+      "task_id": "5a84873e5542997175ce1eec"
+    },
+    {
+      "context_lexical_tokens": 968,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "019c11f3dc2e974e49510fa7d80f1080c98c6e850ad3d76bb7c573ee06c387cf",
+      "stratum_rank": 3,
+      "task_id": "5a75e06155429976ec32bc60"
+    },
+    {
+      "context_lexical_tokens": 1025,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "01adfe01b007c9c045964a95bf6adc291c3b748a6b368dbd6fb48552fef5f4df",
+      "stratum_rank": 4,
+      "task_id": "5ae347fb5542992e3233c368"
+    },
+    {
+      "context_lexical_tokens": 1007,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "01c33d2ebf078c7b8ba4c68b358c5e15fd95c884df7e40e18330d6e6a4eca371",
+      "stratum_rank": 5,
+      "task_id": "5a7563a45542996c70cfaeec"
+    },
+    {
+      "context_lexical_tokens": 1066,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "01c821e733f75b72402776e0b4e000f91171a6e5a62b851cd77470bf2009160e",
+      "stratum_rank": 6,
+      "task_id": "5a739b1955429978a71e9044"
+    },
+    {
+      "context_lexical_tokens": 944,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "01ee1b5208547941493e2ef2c36d3dd85fa3a7abb8682360bc38409147c52465",
+      "stratum_rank": 7,
+      "task_id": "5ab8869155429916710eb081"
+    },
+    {
+      "context_lexical_tokens": 1055,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "0205a2cceef7506cfba8ad524ab1e9c46666506fb01348f59bdd857ee3acceca",
+      "stratum_rank": 8,
+      "task_id": "5ab455dc5542991779162c77"
+    },
+    {
+      "context_lexical_tokens": 1007,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "02205427b361b912715abbce8e0f48563266a4a1dc4755e06c06a2d105d00929",
+      "stratum_rank": 9,
+      "task_id": "5abfa5fb5542990832d3a183"
+    },
+    {
+      "context_lexical_tokens": 960,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "024253327d15fd5902f098039d68ab1acda657338eddef8cc51a9abe44f90ed1",
+      "stratum_rank": 10,
+      "task_id": "5ab3952e5542992ade7c6de8"
+    },
+    {
+      "context_lexical_tokens": 976,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "027c93e493c8fda5326203bff1afaf8cfaeb5a928596921541247cd96837a017",
+      "stratum_rank": 11,
+      "task_id": "5ab9d7e4554299232ef4a21f"
+    },
+    {
+      "context_lexical_tokens": 1042,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "02a02407d38216065bb88c9ee683b9c14a97229db20a4d1706ecd017efd3c568",
+      "stratum_rank": 12,
+      "task_id": "5ac017945542997d642959bc"
+    },
+    {
+      "context_lexical_tokens": 947,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "035f22f588144962067464486cbd53a7a8240b61c28ea2c37918c8189537b51e",
+      "stratum_rank": 13,
+      "task_id": "5ae4c35c55429913cc2044fb"
+    },
+    {
+      "context_lexical_tokens": 1064,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "03789eab2aa597681fdcb11f7f430d6789bf0bbec5746a5c0c9d7e7bf343215c",
+      "stratum_rank": 14,
+      "task_id": "5a9064d05542990a9849360f"
+    },
+    {
+      "context_lexical_tokens": 949,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "039aac48c7d5fada06b12d6b8510f3fc0f82faa8debbe383137b405d0a5f0952",
+      "stratum_rank": 15,
+      "task_id": "5a7e1bae55429965cec5ea6f"
+    },
+    {
+      "context_lexical_tokens": 956,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "03a36e8cdc955638b8542f0c9c16e1600cf793b4edf74ff08bcda8924962ddf3",
+      "stratum_rank": 16,
+      "task_id": "5ade6fcd55429975fa854ecf"
+    },
+    {
+      "context_lexical_tokens": 1007,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "03aaabe2b0bc37bcf6fc8d4a3af530f908889fcea86f1b3bc3563dd6c8b83c53",
+      "stratum_rank": 17,
+      "task_id": "5ac3908e554299741d48a297"
+    },
+    {
+      "context_lexical_tokens": 1044,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "03c863cc520aebd47718a2ed7e49adb30788fc65289a268d434dbe789c59626e",
+      "stratum_rank": 18,
+      "task_id": "5a776a805542993735360269"
+    },
+    {
+      "context_lexical_tokens": 1076,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "040d6376988a20de4081f5d55aad2dc0a94e2fba4c6a7481337c24676433805d",
+      "stratum_rank": 19,
+      "task_id": "5a80e5f5554299260e20a1ae"
+    },
+    {
+      "context_lexical_tokens": 1053,
+      "quartile": 3,
+      "question_type": "bridge",
+      "selection_sha256": "042cf1c6989c73bcd6a295680ef44a9934875e27fb81705478e953d21da1701a",
+      "stratum_rank": 20,
+      "task_id": "5abba91e554299642a094b10"
+    },
+    {
+      "context_lexical_tokens": 1159,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "002b1c1abfdeb934b91999f9470ac91f05cf8a371c0a4f0875b9213e1e41c1c2",
+      "stratum_rank": 1,
+      "task_id": "5ae3006c55429928c423959f"
+    },
+    {
+      "context_lexical_tokens": 1085,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0056504b984bfa02ea1639ab1500eeeeb680f4df87606c5c7161bd6201362f2d",
+      "stratum_rank": 2,
+      "task_id": "5a8af28555429951533613b5"
+    },
+    {
+      "context_lexical_tokens": 1142,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "006b73554c15e8dae9900850bced381e2de0c106bebae04fc967456cd85aa097",
+      "stratum_rank": 3,
+      "task_id": "5ae4c5595542990ba0bbb123"
+    },
+    {
+      "context_lexical_tokens": 1296,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "007e108d3395c23cf038f0c1c208981882bc070e10edc3d210a8080455a1c855",
+      "stratum_rank": 4,
+      "task_id": "5abd6db755429933744ab7d0"
+    },
+    {
+      "context_lexical_tokens": 1203,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "00e566877e3655163e4c46456a40309d914729a2c9c64e184082cc88c5f146bc",
+      "stratum_rank": 5,
+      "task_id": "5ab41f6b5542991751b4d671"
+    },
+    {
+      "context_lexical_tokens": 2134,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "010e92fe7ae8a79dec37f9d1d1621897ea1d62ec5ae298aba1f062b9280f5bb4",
+      "stratum_rank": 6,
+      "task_id": "5ae7eb3c5542994a481bbe20"
+    },
+    {
+      "context_lexical_tokens": 1105,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0126785b7c06b7021ba2e9970fbb5ad57c87bad3eaba439a80b0a9658814bad2",
+      "stratum_rank": 7,
+      "task_id": "5ade09a15542995b365fabdf"
+    },
+    {
+      "context_lexical_tokens": 1482,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "016646358ba79be24c69113807b7ff344c3408fb753d86bc07f446f96532ef77",
+      "stratum_rank": 8,
+      "task_id": "5a8eed625542995085b374b9"
+    },
+    {
+      "context_lexical_tokens": 1308,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "016c5aca6ff186ac48f250d43048a9bc630091e0f96fc6ae8a9138cc653c3fd0",
+      "stratum_rank": 9,
+      "task_id": "5a8089dc5542992bc0c4a765"
+    },
+    {
+      "context_lexical_tokens": 1195,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "01794295c520c8936d9a58f4c43f9d64b17ecc779da946ceacb02e75d1f7bc59",
+      "stratum_rank": 10,
+      "task_id": "5ac02c4a5542992a796decbd"
+    },
+    {
+      "context_lexical_tokens": 1446,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0199a7470fc9879a3dc74d9a9e4d1d7b6d4cfa9ec5cc14b12122b15ad8f766fe",
+      "stratum_rank": 11,
+      "task_id": "5ae26cb15542994d89d5b421"
+    },
+    {
+      "context_lexical_tokens": 1095,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "01b31642aafc38631364f8c243a630bff0c27353068f8460c6ef111e2d75298c",
+      "stratum_rank": 12,
+      "task_id": "5a84c66a5542994c784dda45"
+    },
+    {
+      "context_lexical_tokens": 1327,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "020da1c18f9039dddae76a05e19b7d3693291af3192dfa9050731c1841a10d0c",
+      "stratum_rank": 13,
+      "task_id": "5a78e9a2554299148911f995"
+    },
+    {
+      "context_lexical_tokens": 1376,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0217b1fad678a8511e38e7ecdff8860094efb7833e2b37331795c9509b2d5ef4",
+      "stratum_rank": 14,
+      "task_id": "5abdd30c5542991f66106052"
+    },
+    {
+      "context_lexical_tokens": 1124,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0225a802039d9e7901052aa02c507277755f61cca5cc8403357e0e880ad1d829",
+      "stratum_rank": 15,
+      "task_id": "5abce85755429959677d6b3e"
+    },
+    {
+      "context_lexical_tokens": 1088,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "0246347feb13597ce40c29e6629819806b7a17802d3db507f4b248e2cd131dc2",
+      "stratum_rank": 16,
+      "task_id": "5a7b88165542997c3ec971fe"
+    },
+    {
+      "context_lexical_tokens": 1281,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "025b48ed80948c46a31135e81974d603d3d13e71bb8ec256af17cc6b57cd801a",
+      "stratum_rank": 17,
+      "task_id": "5ae0247955429925eb1afc22"
+    },
+    {
+      "context_lexical_tokens": 1159,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "026a3c0d7baa391f08cea44807816fe203010accfa80a17fc92732ddc2966b4a",
+      "stratum_rank": 18,
+      "task_id": "5ae1e22a5542997f29b3c160"
+    },
+    {
+      "context_lexical_tokens": 1122,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "027baff62acef0399842b6c0cd7065f5e1b24798464d1b62fd46b540da4dafb9",
+      "stratum_rank": 19,
+      "task_id": "5ae0c7b055429945ae95944b"
+    },
+    {
+      "context_lexical_tokens": 1136,
+      "quartile": 4,
+      "question_type": "bridge",
+      "selection_sha256": "02ca978c51f85167ba51330c456bceb44192211019a97f73bb834c9a9dd4832e",
+      "stratum_rank": 20,
+      "task_id": "5ac038db554299294b218f57"
+    },
+    {
+      "context_lexical_tokens": 589,
+      "quartile": 1,
+      "question_type": "comparison",
+      "selection_sha256": "003e716e31521c941e43d1ed04a9fdce55d329c5687ee4fd1fe54dcee98ed3ce",
+      "stratum_rank": 1,
+      "task_id": "5adc6eb65542994650320cf3"
+    },
+    {
+      "context_lexical_tokens": 586,
+      "quartile": 1,
+      "question_type": "comparison",
+      "selection_sha256": "00d832e48189d23dff91139aa0710c3785839524f53b06eb5ba9becafaed2a86",
+      "stratum_rank": 2,
+      "task_id": "5ac19b2c55429963665198b6"
+    },
+    {
+      "context_lexical_tokens": 595,
+      "quartile": 1,
+      "question_type": "comparison",
+      "selection_sha256": "02a9f77fad8e82149899dd98cd315c03bee6e47680bde3b4e9517f008cc7de59",
+      "stratum_rank": 3,
+      "task_id": "5ab66e1355429954757d32b2"
+    },
+    {
+      "context_lexical_tokens": 291,
+      "quartile": 1,
+      "question_type": "comparison",
+      "selection_sha256": "0393d479598f1fe13ab64799a417e1045c99b10364f1627d6fe8539de948b61c",
+      "stratum_rank": 4,
+      "task_id": "5a77d12755429967ab1052b8"
+    },
+    {
+      "context_lexical_tokens": 574,
+      "quartile": 1,
+      "question_type": "comparison",
+      "selection_sha256": "052d38a0af3def60d4067027ba9bad526371c8fbf287c2dde72ed7c56992f05e",
+      "stratum_rank": 5,
+      "task_id": "5abd920e55429924427fd05d"
+    },
+    {
+      "context_lexical_tokens": 716,
+      "quartile": 2,
+      "question_type": "comparison",
+      "selection_sha256": "001fbf52838114c4adde62d7a3054bd9b2e51150f5a1ab540c2639414e45bddb",
+      "stratum_rank": 1,
+      "task_id": "5a89fa2655429970aeb701d2"
+    },
+    {
+      "context_lexical_tokens": 732,
+      "quartile": 2,
+      "question_type": "comparison",
+      "selection_sha256": "00d766571b2c38a2ad22d51f9f221e1b4c480535673c4c69e798ea3913787ba4",
+      "stratum_rank": 2,
+      "task_id": "5add11935542994734353827"
+    },
+    {
+      "context_lexical_tokens": 786,
+      "quartile": 2,
+      "question_type": "comparison",
+      "selection_sha256": "00de1f713589b79219a5abe93be1c0fc71cb812917d6c2e8e6aa365ec4de83ea",
+      "stratum_rank": 3,
+      "task_id": "5abd4f2e5542993062266c4b"
+    },
+    {
+      "context_lexical_tokens": 732,
+      "quartile": 2,
+      "question_type": "comparison",
+      "selection_sha256": "00f251e542e4772e6fcc0dde46bff6fbf4b5e36813c5b7cbfc07dc4dddad9bc3",
+      "stratum_rank": 4,
+      "task_id": "5a74a62b55429916b01641a0"
+    },
+    {
+      "context_lexical_tokens": 751,
+      "quartile": 2,
+      "question_type": "comparison",
+      "selection_sha256": "014ba8b5e99b9e52fe8e585180170d01220aef582cd249e32dbaaa01f242e092",
+      "stratum_rank": 5,
+      "task_id": "5a8600665542994775f606ee"
+    },
+    {
+      "context_lexical_tokens": 883,
+      "quartile": 3,
+      "question_type": "comparison",
+      "selection_sha256": "02079a201e3e583abcac6b8b29f3108f317ed5f0d674698b544a6773a04a8574",
+      "stratum_rank": 1,
+      "task_id": "5abc25b6554299700f9d77f9"
+    },
+    {
+      "context_lexical_tokens": 824,
+      "quartile": 3,
+      "question_type": "comparison",
+      "selection_sha256": "028f0f9f5f9e744ce9c130bf8865ff5383bf03e20c9cd72dfa284d71a37834d7",
+      "stratum_rank": 2,
+      "task_id": "5abbdaac5542992ccd8e7fc0"
+    },
+    {
+      "context_lexical_tokens": 956,
+      "quartile": 3,
+      "question_type": "comparison",
+      "selection_sha256": "03e3329ffc18adfa276eb05838e3edc998d49fc52ce97bcdafa475da482fbbf7",
+      "stratum_rank": 3,
+      "task_id": "5a74702555429929fddd8428"
+    },
+    {
+      "context_lexical_tokens": 858,
+      "quartile": 3,
+      "question_type": "comparison",
+      "selection_sha256": "046f2ef3e77183159289671ddd1bade4f672df4fd7b3c1d21de33abf4a4e43c6",
+      "stratum_rank": 4,
+      "task_id": "5abdc0ad55429933744ab81b"
+    },
+    {
+      "context_lexical_tokens": 848,
+      "quartile": 3,
+      "question_type": "comparison",
+      "selection_sha256": "048110dc7eb607f1ab3c8dcf0efa6ad92bd7a7cabb0a2d0ad62d493c2dee0b5d",
+      "stratum_rank": 5,
+      "task_id": "5a851b0d5542997175ce1f7f"
+    },
+    {
+      "context_lexical_tokens": 1378,
+      "quartile": 4,
+      "question_type": "comparison",
+      "selection_sha256": "00a690f296eb08018383e20e2dccaa57e4bd6944c7f99632d89caa3e5c0e6cb3",
+      "stratum_rank": 1,
+      "task_id": "5ae588cb55429960a22e0300"
+    },
+    {
+      "context_lexical_tokens": 1778,
+      "quartile": 4,
+      "question_type": "comparison",
+      "selection_sha256": "00f532a9e8dd500737b5fc4976b16135a5041d6a180dc8547179906e14550e73",
+      "stratum_rank": 2,
+      "task_id": "5a76538d5542992db9473764"
+    },
+    {
+      "context_lexical_tokens": 1198,
+      "quartile": 4,
+      "question_type": "comparison",
+      "selection_sha256": "0104d3760313feac4b8020a1a9546227c775944eedeaa6104f6139e38345e731",
+      "stratum_rank": 3,
+      "task_id": "5a8f5a185542992414482a71"
+    },
+    {
+      "context_lexical_tokens": 1581,
+      "quartile": 4,
+      "question_type": "comparison",
+      "selection_sha256": "013745788c53701dd195743ca78146e1cf693966d978f5c3dc7eb512b0a50d9a",
+      "stratum_rank": 4,
+      "task_id": "5a876f785542993e715abf42"
+    },
+    {
+      "context_lexical_tokens": 1145,
+      "quartile": 4,
+      "question_type": "comparison",
+      "selection_sha256": "01463875585b3494a82afbc6d7e9b617f982ed7df840a3a1b757823171dab6a5",
+      "stratum_rank": 5,
+      "task_id": "5ab8337a55429919ba4e225f"
+    }
+  ],
+  "selection_id": "confirmatory-hotpot100-tasks-v1",
+  "selection_rule_commit": "97044a558b77cb2b11d8910c9e50ab6c4cc9a0dc",
+  "selection_rule_sha256": "9ED3A7EAF3C6A63C28ED3C26ABE8C478EEE81AEB3A733C5F0377C57A67EF9CB2",
+  "selection_seed": "FLLM2026-RRR-1",
+  "stratum_population": {
+    "bridge:Q1": 1475,
+    "bridge:Q2": 1475,
+    "bridge:Q3": 1475,
+    "bridge:Q4": 1474,
+    "comparison:Q1": 361,
+    "comparison:Q2": 361,
+    "comparison:Q3": 361,
+    "comparison:Q4": 361
+  },
+  "stratum_quotas": {
+    "bridge:Q1": 20,
+    "bridge:Q2": 20,
+    "bridge:Q3": 20,
+    "bridge:Q4": 20,
+    "comparison:Q1": 5,
+    "comparison:Q2": 5,
+    "comparison:Q3": 5,
+    "comparison:Q4": 5
+  },
+  "target_tasks": 100
+}

@@ -1,0 +1,99 @@
+﻿schema_version: "1.0.0"
+matrix_design_id: "confirmatory-matrix-design-v1"
+protocol: "confirmatory-v1"
+status: "DEFINED_BEFORE_CONFIRMATORY_MODEL_RUNS"
+
+source_freezes:
+  runner_commit: "a2739a974d5ea82bd04c36f120f3b48e6a2fee4a"
+  hotpot_selection_commit: "5eb04b5a3e47c71e5456a36a19a36077e7bc3bcd"
+  reference_geometry_commit: "b1920604d2b55ff2a93c224a674f315fc636df50"
+  budget_regime_commit: "55419ff1e867d21cf729e173116e6cd1b22edd23"
+
+supported_policies:
+  - legacy_static
+  - greedy
+  - fixed_reservation
+  - proposed
+
+unsupported_in_confirmatory_v1:
+  - fixed_ex_ante_split
+  - no_reservation_ablation
+  - no_branch_release_ablation
+  - no_reallocation_ablation
+  - output_only_reservation_ablation
+
+primary_analysis:
+  benchmark: "hotpotqa"
+  task_count: 100
+  models:
+    - "Qwen/Qwen3-8B"
+    - "meta-llama/Llama-3.1-8B-Instruct"
+    - "google/gemma-4-E4B-it"
+  policies:
+    - legacy_static
+    - proposed
+  budget_condition: transition
+  repetitions_per_task_policy_model: 3
+  analysis_unit: "task; repetitions aggregated within task"
+  expected_runs: 1800
+
+anchor_model:
+  model_id: "Qwen/Qwen3-8B"
+  selection_rule: "first model in frozen pilot60_config model order; no outcome information used"
+
+anchor_deep_matrix:
+  benchmarks:
+    quixbugs: 40
+    hotpotqa: 100
+  policies:
+    - legacy_static
+    - greedy
+    - fixed_reservation
+    - proposed
+  budget_conditions:
+    constrained: 1
+    transition: 3
+    relaxed: 1
+  expected_runs: 2800
+
+cross_model_extension:
+  benchmark: "hotpotqa"
+  models:
+    - "meta-llama/Llama-3.1-8B-Instruct"
+    - "google/gemma-4-E4B-it"
+  policies:
+    - legacy_static
+    - proposed
+  budget_condition: transition
+  repetitions: 3
+  expected_runs: 1200
+
+expected_totals:
+  all_runs: 4000
+  by_model:
+    Qwen/Qwen3-8B: 2800
+    meta-llama/Llama-3.1-8B-Instruct: 600
+    google/gemma-4-E4B-it: 600
+  by_benchmark:
+    quixbugs: 800
+    hotpotqa: 3200
+  by_budget_condition:
+    constrained: 560
+    transition: 2880
+    relaxed: 560
+  by_policy:
+    legacy_static: 1300
+    proposed: 1300
+    greedy: 700
+    fixed_reservation: 700
+
+information_isolation:
+  pilot60_accuracy_used: false
+  pilot60_resource_effect_used_to_choose_matrix: false
+  confirmatory_outcomes_used: false
+  task_accuracy_used: false
+
+execution:
+  model_calls_performed_for_matrix_design: 0
+  manifest_generated: false
+  confirmatory_execution_authorized: false

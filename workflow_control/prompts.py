@@ -19,7 +19,9 @@ def hotpot_answer_prompt(task: HotpotTask, documents: tuple[EvidenceDocument, ..
 Question: {task.question}
 Retrieved evidence:
 {_evidence_text(documents)}
-Return ANSWER followed by a concise evidence citation.
+Return exactly two non-empty lines:
+FINAL_ANSWER: <short answer only>
+EVIDENCE: <concise evidence citation or justification>
 """
 
 
@@ -33,7 +35,9 @@ Question: {task.question}
 Candidate: {candidate_answer}
 Retrieved evidence:
 {_evidence_text(documents)}
-Return SUFFICIENT or INSUFFICIENT, then one short reason.
+Return exactly two non-empty lines:
+VERDICT: SUFFICIENT or INSUFFICIENT
+REASON: <one short reason>
 """
 
 
@@ -47,5 +51,7 @@ Question: {task.question}
 Prior candidate: {prior_answer}
 Expanded evidence:
 {_evidence_text(documents)}
-Return ANSWER followed by a concise evidence citation.
+Return exactly two non-empty lines:
+FINAL_ANSWER: <short answer only>
+EVIDENCE: <concise evidence citation or justification>
 """

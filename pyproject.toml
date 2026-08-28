@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "stage-aware-llm-resource-allocation"
+name = "evidence-gated-budget-aware-code-repair"
 version = "0.1.0"
-description = "Reproducibility artifact for stage-aware resource allocation in multi-stage LLM workflows"
+description = "Controlled QuixBugs benchmark for evidence-guided budget-aware LLM code repair"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }

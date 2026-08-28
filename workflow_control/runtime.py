@@ -10,6 +10,7 @@ from benchmark.patcher import apply_function_patch
 from benchmark.quixbugs import QuixBugsBenchmark
 from workflow_control.backends import ModelBackend
 from workflow_control.controller import BudgetController
+from workflow_control.parsing import parse_final_answer, parse_verdict
 from workflow_control.prompts import (
     hotpot_answer_prompt,
     hotpot_plan_prompt,
@@ -26,6 +27,28 @@ class StageOutput:
     model_metadata: dict[str, Any]
 
 
+class StructuralShortfallError(RuntimeError):
+    """Expected scientific terminal condition when a stage minimum cannot fit."""
+
+    def __init__(self, *, call_id: str, stage_id: str, remaining: int, required_minimum: int) -> None:
+        self.call_id = call_id
+        self.stage_id = stage_id
+        self.remaining = remaining
+        self.required_minimum = required_minimum
+        super().__init__(
+            f"structural shortfall before {call_id}: remaining={remaining}, "
+            f"required={required_minimum}"
+        )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "call_id": self.call_id,
+            "stage_id": self.stage_id,
+            "remaining": self.remaining,
+            "required_minimum": self.required_minimum,
+        }
+
+
 def call_stage(
     backend: ModelBackend,
     controller: BudgetController,
@@ -39,9 +62,11 @@ def call_stage(
     controller.materialize_future_prompt(stage_id, exact_prompt)
     allocation = controller.prepare_call(call_id, stage_id, exact_prompt)
     if not allocation.admitted:
-        raise RuntimeError(
-            f"structural shortfall before {call_id}: remaining={allocation.budget_before}, "
-            f"required={allocation.required_minimum}"
+        raise StructuralShortfallError(
+            call_id=call_id,
+            stage_id=stage_id,
+            remaining=allocation.budget_before,
+            required_minimum=allocation.required_minimum,
         )
     text, usage, metadata = backend.generate(messages, allocation.selected_max_output)
     controller.finish_call(
@@ -157,6 +182,7 @@ def run_code_workflow(
     return {
         "task_id": task_id,
         "validation": evidence.model_dump(),
+        "functional_correct": bool(evidence.success),
         "critic": critic.text,
         "stages": [asdict(output) for output in outputs],
         "run_end": controller.finalize(),
@@ -170,6 +196,34 @@ def run_hotpot_workflow(
     task: HotpotTask,
 ) -> dict[str, Any]:
     outputs: list[StageOutput] = []
+
+    def invalid_response(
+        *,
+        stage_id: str,
+        raw_answer: str | None,
+        parsed_answer: str | None,
+        answer_parse_ok: bool,
+        final_verification_stage: str | None,
+        initial_verifier_verdict: str | None = None,
+        recovery_documents: int = 0,
+    ) -> dict[str, Any]:
+        return {
+            "task_id": task.task_id,
+            "terminal_status": "invalid_response",
+            "classification": "scientific",
+            "parse_failure_stage": stage_id,
+            "candidate_answer_raw": raw_answer,
+            "candidate_answer": parsed_answer,
+            "answer_parse_ok": answer_parse_ok,
+            "initial_verifier_verdict": initial_verifier_verdict,
+            "final_verification_stage": final_verification_stage,
+            "final_verification_parse_ok": False,
+            "final_verification_verdict": None,
+            "recovery_documents": recovery_documents,
+            "stages": [asdict(output) for output in outputs],
+            "run_end": controller.finalize(normal_completion=False),
+        }
+
     plan = call_stage(
         backend,
         controller,
@@ -178,9 +232,11 @@ def run_hotpot_workflow(
         prompt=hotpot_plan_prompt(task),
     )
     outputs.append(plan)
+
     retriever = DeterministicRetriever(task.documents)
     ranked = retriever.ranked(f"{task.question} {plan.text}")
     evidence = tuple(ranked[:2])
+
     answer = call_stage(
         backend,
         controller,
@@ -189,6 +245,16 @@ def run_hotpot_workflow(
         prompt=hotpot_answer_prompt(task, evidence),
     )
     outputs.append(answer)
+    parsed_answer = parse_final_answer(answer.text)
+    if parsed_answer is None:
+        return invalid_response(
+            stage_id="answer",
+            raw_answer=answer.text,
+            parsed_answer=None,
+            answer_parse_ok=False,
+            final_verification_stage=None,
+        )
+
     verifier = call_stage(
         backend,
         controller,
@@ -197,15 +263,36 @@ def run_hotpot_workflow(
         prompt=hotpot_verify_prompt(task, evidence, answer.text),
     )
     outputs.append(verifier)
-    final_answer = answer.text
-    if verifier.text.strip().upper().startswith("SUFFICIENT"):
+    verifier_verdict = parse_verdict(verifier.text)
+    if verifier_verdict is None:
+        return invalid_response(
+            stage_id="verifier",
+            raw_answer=answer.text,
+            parsed_answer=parsed_answer,
+            answer_parse_ok=True,
+            final_verification_stage="verifier",
+        )
+
+    final_answer_raw = answer.text
+    final_answer = parsed_answer
+    final_verification_stage = "verifier"
+    final_verification_verdict = verifier_verdict
+    recovery_documents = 0
+
+    if verifier_verdict == "SUFFICIENT":
         controller.release_unreachable({"plan", "answer", "verifier"})
     else:
         seen = {document.title for document in evidence}
-        additional = retriever.next_unseen(f"{task.question} {plan.text}", seen)
-        if additional is None:
-            raise RuntimeError("no unseen evidence remains for the revision branch")
-        expanded = evidence + (additional,)
+        additional = retriever.next_unseen_many(
+            f"{task.question} {plan.text}",
+            seen,
+            limit=2,
+        )
+        if len(additional) != 2:
+            raise RuntimeError("fewer than two unseen HotpotQA recovery documents remain")
+        recovery_documents = len(additional)
+        expanded = evidence + additional
+
         revision = call_stage(
             backend,
             controller,
@@ -214,7 +301,20 @@ def run_hotpot_workflow(
             prompt=hotpot_revision_prompt(task, expanded, answer.text),
         )
         outputs.append(revision)
-        final_answer = revision.text
+        parsed_revision = parse_final_answer(revision.text)
+        if parsed_revision is None:
+            return invalid_response(
+                stage_id="revise",
+                raw_answer=revision.text,
+                parsed_answer=None,
+                answer_parse_ok=False,
+                final_verification_stage=None,
+                initial_verifier_verdict=verifier_verdict,
+                recovery_documents=recovery_documents,
+            )
+
+        final_answer_raw = revision.text
+        final_answer = parsed_revision
         terminal = call_stage(
             backend,
             controller,
@@ -223,9 +323,30 @@ def run_hotpot_workflow(
             prompt=hotpot_verify_prompt(task, expanded, revision.text),
         )
         outputs.append(terminal)
+        terminal_verdict = parse_verdict(terminal.text)
+        if terminal_verdict is None:
+            return invalid_response(
+                stage_id="terminal_verifier",
+                raw_answer=revision.text,
+                parsed_answer=parsed_revision,
+                answer_parse_ok=True,
+                final_verification_stage="terminal_verifier",
+                initial_verifier_verdict=verifier_verdict,
+                recovery_documents=recovery_documents,
+            )
+        final_verification_stage = "terminal_verifier"
+        final_verification_verdict = terminal_verdict
+
     return {
         "task_id": task.task_id,
+        "candidate_answer_raw": final_answer_raw,
         "candidate_answer": final_answer,
+        "answer_parse_ok": True,
+        "initial_verifier_verdict": verifier_verdict,
+        "final_verification_stage": final_verification_stage,
+        "final_verification_parse_ok": True,
+        "final_verification_verdict": final_verification_verdict,
+        "recovery_documents": recovery_documents,
         "stages": [asdict(output) for output in outputs],
         "run_end": controller.finalize(),
     }

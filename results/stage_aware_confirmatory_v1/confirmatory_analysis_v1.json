@@ -1,0 +1,1271 @@
+{
+  "analysis_plan_id": "confirmatory-analysis-v1",
+  "analysis_semantics": {
+    "bootstrap_quantile_method": "numpy.quantile method=linear at 0.025 and 0.975",
+    "completed_attempt_rule": "For each CONFIRMATORY_RUN_END, use the event segment beginning at the most recent INITIAL_BUDGET for that run_id. Incomplete resumed prefixes are retained in raw telemetry but excluded from analysis.",
+    "downstream_stage_completion": {
+      "hotpotqa": "verifier stage present in completed attempt result",
+      "quixbugs": "critic stage present in completed attempt result"
+    },
+    "primary_bootstrap": "resample HotpotQA task IDs with replacement; preserve cross-model pairing; compute per-model effects then macro-average across the three models",
+    "repetition_rule": "aggregate repetitions within task/model/policy before task-level inference",
+    "shortfall_rate": "fraction of runs with at least one corresponding shortfall event in completed attempt"
+  },
+  "completed_runs": 4000,
+  "descriptive_quality": [
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.42894168576521513
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.31
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.4772750190985485
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.46894168576521517
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.42894168576521513
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.31
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.4772750190985485
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.46894168576521517
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.42894168576521513
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.31
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.4772750190985485
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.46894168576521517
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.31
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.4114220779220779
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.31
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.3
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.4772750190985485
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.46894168576521517
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.36
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.35
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.41967396343355423
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.28
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.41967396343355423
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.32
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "google/gemma-4-E4B-it",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.28
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.25
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.33690165063694477
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.25
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "legacy_static",
+      "task_count": 100,
+      "value": 0.22
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "exact_match",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.26
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "token_f1",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.3469016506369448
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.26
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "metric": "verification_supported_correct",
+      "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+      "policy": "proposed",
+      "task_count": 100,
+      "value": 0.23
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "fixed_reservation",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "greedy",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.05
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.05
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.05
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "legacy_static",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.025
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.375
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "end_to_end_functional_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.25
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "metric": "reliable_correct",
+      "model_id": "Qwen/Qwen3-8B",
+      "policy": "proposed",
+      "task_count": 40,
+      "value": 0.25
+    }
+  ],
+  "primary_quality": {
+    "exact_match": {
+      "macro": {
+        "delta": 0.0033333333333332993,
+        "delta_ci95": [
+          0.0,
+          0.01
+        ],
+        "guardrail_decision": null,
+        "legacy": 0.31,
+        "relative_difference": 0.0107526881720429,
+        "rrr": 0.3133333333333333
+      },
+      "metric": "exact_match",
+      "model_count": 3,
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.36,
+          "relative_difference": 0.0,
+          "rrr": 0.36
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.32,
+          "relative_difference": 0.0,
+          "rrr": 0.32
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.010000000000000009,
+          "delta_ci95": [
+            0.0,
+            0.03
+          ],
+          "legacy": 0.25,
+          "relative_difference": 0.040000000000000036,
+          "rrr": 0.26
+        }
+      },
+      "repetitions_aggregated_within_task": true,
+      "task_count": 100
+    },
+    "reliable_correct": {
+      "macro": {
+        "delta": 0.0033333333333332993,
+        "delta_ci95": [
+          0.0,
+          0.01
+        ],
+        "guardrail_decision": {
+          "noninferior": true,
+          "noninferiority_margin": 0.05,
+          "superior": false
+        },
+        "legacy": 0.31,
+        "relative_difference": 0.0107526881720429,
+        "rrr": 0.3133333333333333
+      },
+      "metric": "reliable_correct",
+      "model_count": 3,
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.36,
+          "relative_difference": 0.0,
+          "rrr": 0.36
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.32,
+          "relative_difference": 0.0,
+          "rrr": 0.32
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.010000000000000009,
+          "delta_ci95": [
+            0.0,
+            0.03
+          ],
+          "legacy": 0.25,
+          "relative_difference": 0.040000000000000036,
+          "rrr": 0.26
+        }
+      },
+      "repetitions_aggregated_within_task": true,
+      "task_count": 100
+    },
+    "token_f1": {
+      "macro": {
+        "delta": 0.003333333333333355,
+        "delta_ci95": [
+          0.0,
+          0.01
+        ],
+        "guardrail_decision": null,
+        "legacy": 0.40850576661190474,
+        "relative_difference": 0.00815981953199731,
+        "rrr": 0.4118390999452381
+      },
+      "metric": "token_f1",
+      "model_count": 3,
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.46894168576521517,
+          "relative_difference": 0.0,
+          "rrr": 0.46894168576521517
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.41967396343355423,
+          "relative_difference": 0.0,
+          "rrr": 0.41967396343355423
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.010000000000000009,
+          "delta_ci95": [
+            0.0,
+            0.03
+          ],
+          "legacy": 0.33690165063694477,
+          "relative_difference": 0.029682252909993326,
+          "rrr": 0.3469016506369448
+        }
+      },
+      "repetitions_aggregated_within_task": true,
+      "task_count": 100
+    },
+    "verification_supported_correct": {
+      "macro": {
+        "delta": 0.003333333333333355,
+        "delta_ci95": [
+          0.0,
+          0.01
+        ],
+        "guardrail_decision": null,
+        "legacy": 0.2833333333333333,
+        "relative_difference": 0.011764705882353017,
+        "rrr": 0.2866666666666667
+      },
+      "metric": "verification_supported_correct",
+      "model_count": 3,
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.35,
+          "relative_difference": 0.0,
+          "rrr": 0.35
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "delta_ci95": [
+            0.0,
+            0.0
+          ],
+          "legacy": 0.28,
+          "relative_difference": 0.0,
+          "rrr": 0.28
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.010000000000000009,
+          "delta_ci95": [
+            0.0,
+            0.03
+          ],
+          "legacy": 0.22,
+          "relative_difference": 0.0454545454545455,
+          "rrr": 0.23
+        }
+      },
+      "repetitions_aggregated_within_task": true,
+      "task_count": 100
+    }
+  },
+  "primary_resources": {
+    "downstream_stage_completion": {
+      "macro": {
+        "delta": 0.0033333333333334103,
+        "legacy": 0.91,
+        "rrr": 0.9133333333333334
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "legacy": 0.94,
+          "rrr": 0.94
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 1.0,
+          "rrr": 1.0
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.010000000000000009,
+          "legacy": 0.79,
+          "rrr": 0.8
+        }
+      }
+    },
+    "provider_calls": {
+      "macro": {
+        "delta": 0.0033333333333334103,
+        "legacy": 3.546666666666667,
+        "rrr": 3.5500000000000003
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "legacy": 3.36,
+          "rrr": 3.36
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 3.68,
+          "rrr": 3.68
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.009999999999999787,
+          "legacy": 3.6,
+          "rrr": 3.61
+        }
+      }
+    },
+    "reservation_shortfall": {
+      "macro": {
+        "delta": 0.07333333333333333,
+        "legacy": 0.0,
+        "rrr": 0.07333333333333333
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.04,
+          "legacy": 0.0,
+          "rrr": 0.04
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 0.0,
+          "rrr": 0.0
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 0.18,
+          "legacy": 0.0,
+          "rrr": 0.18
+        }
+      }
+    },
+    "structural_shortfall": {
+      "macro": {
+        "delta": -0.006666666666666682,
+        "legacy": 0.09000000000000001,
+        "rrr": 0.08333333333333333
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 0.0,
+          "legacy": 0.06,
+          "rrr": 0.06
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 0.0,
+          "rrr": 0.0
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": -0.01999999999999999,
+          "legacy": 0.21,
+          "rrr": 0.19
+        }
+      }
+    },
+    "total_consumed_tokens": {
+      "macro": {
+        "delta": 1.1033333333332394,
+        "legacy": 1388.17,
+        "rrr": 1389.2733333333333
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": -1.099999999999909,
+          "legacy": 1197.35,
+          "rrr": 1196.25
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 1370.87,
+          "rrr": 1370.87
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": 4.410000000000082,
+          "legacy": 1596.29,
+          "rrr": 1600.7
+        }
+      }
+    },
+    "unused_capacity": {
+      "macro": {
+        "delta": -1.1033333333334667,
+        "legacy": 1341.2066666666667,
+        "rrr": 1340.1033333333332
+      },
+      "per_model": {
+        "Qwen/Qwen3-8B": {
+          "delta": 1.1000000000001364,
+          "legacy": 1519.58,
+          "rrr": 1520.68
+        },
+        "google/gemma-4-E4B-it": {
+          "delta": 0.0,
+          "legacy": 1344.06,
+          "rrr": 1344.06
+        },
+        "meta-llama/Llama-3.1-8B-Instruct": {
+          "delta": -4.410000000000082,
+          "legacy": 1159.98,
+          "rrr": 1155.57
+        }
+      }
+    }
+  },
+  "schema_version": "1.0.0",
+  "source_artifacts": {
+    "analysis_plan_canonical_sha256": "DB2F07326C257CF01CFBF34ECFBAEEAEB5DADC6B66572DFFC046C1A0DC49050E",
+    "manifest_canonical_sha256": "A351BBA587CB34D879E5DDBD670E7D091EB94AFB43B6FE120A967F77DCB34AD5",
+    "raw_events_sha256": "1C17817145CD64276D88096EE4559097E95A729E50B306DBA30C8075C0DD3E71"
+  }
+}

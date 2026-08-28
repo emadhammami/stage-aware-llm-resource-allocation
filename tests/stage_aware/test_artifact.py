@@ -1,18 +1,9 @@
 from __future__ import annotations
 
-from pathlib import Path
-
-import pytest
-
 from analysis.stage_aware.artifact import load_publication_artifact, sha256_file
 from analysis.stage_aware.config import load_config
 from analysis.stage_aware.types import Provenance
 
-FINAL_CORE_ARTIFACT = Path("final_core_results.zip")
-pytestmark = pytest.mark.skipif(
-    not FINAL_CORE_ARTIFACT.exists(),
-    reason="optional Phase-0 provenance artifact final_core_results.zip is not present",
-)
 
 def test_publication_artifact_is_complete_exact_and_read_only():
     artifact = "final_core_results.zip"

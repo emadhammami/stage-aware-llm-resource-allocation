@@ -71,10 +71,44 @@ def test_shortfall_is_detected_before_invocation() -> None:
     allocation = controller.prepare_call("c1", "plan", 25)
     assert not allocation.admitted
     assert allocation.structural_shortfall
+    assert allocation.shortfall_cause == "current_minimum_infeasible"
     assert controller.state.consumed == 0
     with pytest.raises(ValueError, match="no admitted allocation"):
         controller.finish_call("c1", input_tokens=25, output_tokens=0)
 
+
+
+def test_proposed_reservation_shortfall_enters_best_effort() -> None:
+    controller = _controller(b0=80)
+    allocation = controller.prepare_call("c1", "plan", 22)
+    minimum = controller.stage_specs["plan"].minimum_output
+
+    assert allocation.admitted
+    assert not allocation.structural_shortfall
+    assert allocation.shortfall_cause == "reservation_shortfall_best_effort"
+    assert allocation.selected_max_output == minimum
+    assert allocation.required_minimum > controller.state.b0
+    assert allocation.protected_continuation == controller.state.b0 - 22 - minimum
+    assert (
+        sum(
+            reservation.amount
+            for reservation in controller.state.reservations.values()
+            if reservation.status == "CREATE"
+        )
+        == allocation.protected_continuation
+    )
+
+    shortfalls = [
+        event
+        for event in controller.state.events
+        if event["event_type"] == "RESERVATION_SHORTFALL"
+    ]
+    assert len(shortfalls) == 1
+    assert shortfalls[0]["cause"] == "reservation_shortfall_best_effort"
+    assert shortfalls[0]["funded_reserve"] == allocation.protected_continuation
+
+    controller.finish_call("c1", input_tokens=22, output_tokens=minimum)
+    assert controller.state.consumed <= controller.state.b0
 
 def test_resume_and_duplicate_debit_protection() -> None:
     first = _controller()
@@ -102,3 +136,27 @@ def test_append_only_telemetry_resume_does_not_duplicate(tmp_path) -> None:
 @pytest.mark.parametrize("policy", list(Policy))
 def test_all_policies_respect_same_supplied_b0(policy: Policy) -> None:
     assert _controller(policy=policy).state.b0 == 240
+
+def test_finalize_normal_completion_releases_active_reservations() -> None:
+    controller = _controller()
+    allocation = controller.prepare_call("c1", "plan", 20)
+    controller.finish_call("c1", input_tokens=20, output_tokens=allocation.selected_max_output)
+    assert any(r.status == "CREATE" for r in controller.state.reservations.values())
+    summary = controller.finalize()
+    assert summary["unresolved_reservations"] == []
+    assert all(r.status != "CREATE" for r in controller.state.reservations.values())
+    actions = [event["event_type"] for event in controller.state.events]
+    assert "RESERVATION_RELEASE" in actions
+    assert "RESERVATION_STRAND" not in actions
+
+
+def test_finalize_abnormal_completion_strands_active_reservations() -> None:
+    controller = _controller()
+    allocation = controller.prepare_call("c1", "plan", 20)
+    controller.finish_call("c1", input_tokens=20, output_tokens=allocation.selected_max_output)
+    assert any(r.status == "CREATE" for r in controller.state.reservations.values())
+    summary = controller.finalize(normal_completion=False)
+    assert summary["unresolved_reservations"] == []
+    assert all(r.status != "CREATE" for r in controller.state.reservations.values())
+    actions = [event["event_type"] for event in controller.state.events]
+    assert "RESERVATION_STRAND" in actions

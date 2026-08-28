@@ -98,8 +98,8 @@ def hotpot_prompt_estimates(
 ) -> Mapping[str, PromptEstimate]:
     ranked = DeterministicRetriever(task.documents).ranked(task.question)
     initial = tuple(ranked[:initial_documents])
-    expanded = tuple(ranked[: initial_documents + 1])
-    answer = "<bounded candidate answer and citations: at most 256 model-native tokens>"
+    expanded = tuple(ranked[: initial_documents + 2])
+    answer = "FINAL_ANSWER: <bounded short answer>\nEVIDENCE: <bounded evidence citation or justification>"
     prompts = {
         "plan": hotpot_plan_prompt(task),
         "answer": hotpot_answer_prompt(task, initial),

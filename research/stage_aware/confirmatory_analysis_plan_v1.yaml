@@ -1,0 +1,80 @@
+﻿schema_version: "1.0.0"
+analysis_plan_id: "confirmatory-analysis-v1"
+protocol: "confirmatory-v1"
+status: "DEFINED_BEFORE_CONFIRMATORY_MODEL_RUNS"
+
+source_freeze:
+  manifest_commit: "8a31003722c84490901038338de63f6823afad75"
+  manifest_tag: "confirmatory-manifest-v1"
+  manifest_canonical_sha256: "A351BBA587CB34D879E5DDBD670E7D091EB94AFB43B6FE120A967F77DCB34AD5"
+
+primary_comparison:
+  benchmark: "hotpotqa"
+  candidate_policy: "proposed"
+  baseline_policy: "legacy_static"
+  models: 3
+  repetitions: 3
+  repetitions_aggregated_within_task: true
+  task_is_analysis_unit: true
+
+quality_guardrail:
+  primary_metric: "reliable_correct"
+  direction: "higher_is_better"
+  noninferiority_margin_absolute: 0.05
+  noninferiority_margin_percentage_points: 5
+  effect_definition: "RRR_minus_legacy_static"
+  confidence_interval: "paired task-level bootstrap 95%"
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260828
+  noninferior_if: "lower_95pct_CI_of_RRR_minus_legacy_static > -0.05"
+  superiority_not_required: true
+  superiority_if_reported_requires: "lower_95pct_CI_of_RRR_minus_legacy_static > 0"
+
+hotpot_quality_reporting:
+  - exact_match
+  - token_f1
+  - reliable_correct
+  - verification_supported_correct
+
+quixbugs_quality_reporting:
+  - functional_correct
+  - end_to_end_functional_correct
+  - reliable_correct
+
+mandatory_raw_reporting:
+  show_legacy_value: true
+  show_rrr_value: true
+  show_absolute_difference_percentage_points: true
+  show_relative_difference_when_meaningful: true
+  show_confidence_interval: true
+  show_per_model_results: true
+  show_macro_average_across_models: true
+  suppress_unfavorable_quality_results: false
+
+mandatory_resource_reporting:
+  - total_consumed_tokens
+  - unused_capacity
+  - provider_calls
+  - downstream_stage_completion
+  - structural_shortfall_rate
+  - reservation_shortfall_rate
+
+mandatory_figures:
+  - "Raw quality: Legacy Static vs RRR, values printed on plot"
+  - "Quality delta forest plot: RRR minus Legacy with zero and -5pp noninferiority lines"
+  - "Token consumption: Legacy Static vs RRR with raw values and delta"
+  - "Downstream stage completion and structural shortfall comparison"
+  - "Quality-resource trade-off plot"
+
+reporting_rules:
+  raw_values_never_hidden: true
+  unfavorable_deltas_reported_verbatim: true
+  no_posthoc_metric_switching: true
+  no_outcome_driven_task_filtering: true
+  no_controller_tuning_after_outcome_inspection: true
+  distinguish_noninferiority_from_superiority: true
+  if_point_estimate_is_negative_but_noninferior: "report exact decline and state noninferior within prespecified margin; do not call it an improvement"
+
+execution:
+  confirmatory_runs_observed_when_plan_defined: 0
+  model_calls_performed_for_analysis_plan: 0

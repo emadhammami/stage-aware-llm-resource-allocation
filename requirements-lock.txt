@@ -1,0 +1,9 @@
+# Minimal pinned floor file for reproducibility. Regenerate with:
+#   python -m pip freeze > requirements-lock.txt
+google-genai>=1.0.0
+matplotlib>=3.8
+pandas>=2.2
+pydantic>=2.7
+pyyaml>=6.0
+pytest>=8.0
+ruff>=0.6

@@ -1,0 +1,246 @@
+{
+  "definitions": {
+    "deficit_task": "task with minimum reservation_slack < 0 across its RRR repetitions",
+    "floor_saturation": "selected_max_output <= current_min",
+    "floor_saturation_intensity": "task-aggregated fraction of RRR allocation events satisfying floor_saturation",
+    "length_finish_fraction": "task-aggregated fraction of provider calls with mapped_finish_class == length",
+    "reservation_slack": "budget_before - required_minimum on RRR allocation events with full_branch_protection observed"
+  },
+  "purpose": "Frozen reporting summary for the operating-envelope and floor-saturation mechanism analysis. No confirmatory claim is derived from this artifact.",
+  "raw_events_sha256": "1C17817145CD64276D88096EE4559097E95A729E50B306DBA30C8075C0DD3E71",
+  "schema_version": "1.0.0",
+  "settings": [
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "constrained",
+      "deficit_prevalence": 0.83,
+      "deficit_tasks": 83,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": -0.10999999999999999,
+          "legacy": 0.82,
+          "rrr": 0.71
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": -0.010000000000000009,
+          "legacy": 0.32,
+          "rrr": 0.31
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.08000000000000002,
+          "legacy": 0.18,
+          "rrr": 0.26
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": 26.600000000000136,
+          "legacy": 1094.31,
+          "rrr": 1120.91
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 100,
+      "rrr_floor_saturation_intensity": 0.8434999999999999,
+      "rrr_length_finish_fraction": 0.6918333333333334,
+      "tasks": 100
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "deficit_prevalence": 0.04,
+      "deficit_tasks": 4,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.94,
+          "rrr": 0.94
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.36,
+          "rrr": 0.36
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.06,
+          "rrr": 0.06
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": -1.099999999999909,
+          "legacy": 1197.35,
+          "rrr": 1196.25
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 4,
+      "rrr_floor_saturation_intensity": 0.015,
+      "rrr_length_finish_fraction": 0.011666666666666665,
+      "tasks": 100
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "relaxed",
+      "deficit_prevalence": 0.0,
+      "deficit_tasks": 0,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 1.0,
+          "rrr": 1.0
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.36,
+          "rrr": 0.36
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.0,
+          "rrr": 0.0
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 1250.79,
+          "rrr": 1250.79
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 0,
+      "rrr_floor_saturation_intensity": 0.0,
+      "rrr_length_finish_fraction": 0.0,
+      "tasks": 100
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "constrained",
+      "deficit_prevalence": 1.0,
+      "deficit_tasks": 40,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": -0.025,
+          "legacy": 0.05,
+          "rrr": 0.025
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": -0.025,
+          "legacy": 0.05,
+          "rrr": 0.025
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.025000000000000022,
+          "legacy": 0.95,
+          "rrr": 0.975
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": -167.14999999999986,
+          "legacy": 1209.725,
+          "rrr": 1042.575
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 40,
+      "rrr_floor_saturation_intensity": 0.9916666666666666,
+      "rrr_length_finish_fraction": 0.9625,
+      "tasks": 40
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "transition",
+      "deficit_prevalence": 0.0,
+      "deficit_tasks": 0,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.825,
+          "rrr": 0.825
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.25,
+          "rrr": 0.25
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.175,
+          "rrr": 0.175
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": -6.4500000000000455,
+          "legacy": 1708.5666666666668,
+          "rrr": 1702.1166666666668
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 0,
+      "rrr_floor_saturation_intensity": 0.0,
+      "rrr_length_finish_fraction": 0.016666666666666666,
+      "tasks": 40
+    },
+    {
+      "benchmark": "quixbugs",
+      "budget_condition": "relaxed",
+      "deficit_prevalence": 0.0,
+      "deficit_tasks": 0,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.975,
+          "rrr": 0.975
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.375,
+          "rrr": 0.375
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": 0.0,
+          "legacy": 0.025,
+          "rrr": 0.025
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": -0.8999999999998636,
+          "legacy": 1862.1,
+          "rrr": 1861.2
+        }
+      },
+      "model": "Qwen/Qwen3-8B",
+      "rrr_any_floor_tasks": 0,
+      "rrr_floor_saturation_intensity": 0.0,
+      "rrr_length_finish_fraction": 0.0,
+      "tasks": 40
+    },
+    {
+      "benchmark": "hotpotqa",
+      "budget_condition": "transition",
+      "deficit_prevalence": 0.18,
+      "deficit_tasks": 18,
+      "metrics": {
+        "downstream_stage_completion": {
+          "delta_rrr_minus_legacy": 0.010000000000000009,
+          "legacy": 0.79,
+          "rrr": 0.8
+        },
+        "reliable_correct": {
+          "delta_rrr_minus_legacy": 0.010000000000000009,
+          "legacy": 0.25,
+          "rrr": 0.26
+        },
+        "structural_shortfall": {
+          "delta_rrr_minus_legacy": -0.01999999999999999,
+          "legacy": 0.21,
+          "rrr": 0.19
+        },
+        "total_consumed_tokens": {
+          "delta_rrr_minus_legacy": 4.410000000000082,
+          "legacy": 1596.29,
+          "rrr": 1600.7
+        }
+      },
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "rrr_any_floor_tasks": 18,
+      "rrr_floor_saturation_intensity": 0.06616666666666667,
+      "rrr_length_finish_fraction": 0.05283333333333333,
+      "tasks": 100
+    }
+  ],
+  "status": "POSTHOC_EXPLORATORY_NOT_CONFIRMATORY_NOT_CAUSAL"
+}

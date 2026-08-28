@@ -4,15 +4,8 @@ import csv
 import hashlib
 from pathlib import Path
 
-import pytest
-
 from analysis.stage_aware.run_phase0 import run
 
-FINAL_CORE_ARTIFACT = Path("final_core_results.zip")
-pytestmark = pytest.mark.skipif(
-    not FINAL_CORE_ARTIFACT.exists(),
-    reason="optional Phase-0 provenance artifact final_core_results.zip is not present",
-)
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()

@@ -1,87 +1,102 @@
-# Stage-Aware LLM Resource Allocation
+﻿# Stage-Aware LLM Resource Allocation
 
 Reproducibility artifact for an empirical study of stage-aware resource allocation in multi-stage LLM workflows.
 
-## Status
+## Overview
 
-This repository contains the frozen pre-execution design for the Pilot60 engineering study. Scientific Pilot60 results are not yet included.
+This repository contains code, frozen manifests, analysis plans, selected result artifacts, and figure-generation scripts for a study of budgeted multi-stage LLM workflows.
 
-## Method
+The main idea is a stage-aware controller that:
+- protects minimum budget required for reachable downstream stages,
+- releases reservations for unreachable stages,
+- returns unused capacity,
+- reallocates available budget subject to a hard task-level limit.
 
-The proposed controller uses a reserve-release-reallocate strategy. It protects minimum resources for reachable downstream stages, returns unused capacity, releases reservations for unreachable stages, and reallocates available capacity while respecting a hard task-level budget.
+## Study components
 
-## Pilot60
+### 1. Pilot60
+A small frozen engineering study used for pre-confirmatory validation.
 
-The frozen matrix contains:
-
-- 5 tasks
-- 4 allocation policies
-- 3 open-weight model families
-- 1 repetition
+Main characteristics:
 - 60 runs
+- 3 open-weight model families
+- 4 allocation policies
+- QuixBugs and HotpotQA tasks
 
-Models:
+### 2. Confirmatory study
+A frozen confirmatory evaluation with pre-specified design and analysis.
 
-- Qwen/Qwen3-8B
-- meta-llama/Llama-3.1-8B-Instruct
-- google/gemma-4-E4B-it
+Main characteristics:
+- 4000 runs
+- 3 open-weight model families
+- primary comparison on HotpotQA
+- paired noninferiority analysis for quality
+- additional resource and operating-envelope diagnostics
 
-Policies:
+## Models
+
+- `Qwen/Qwen3-8B`
+- `meta-llama/Llama-3.1-8B-Instruct`
+- `google/gemma-4-E4B-it`
+
+## Policies
 
 - Legacy static allocation
 - Greedy allocation
 - Fixed reservation
-- Prompt-aware reserve-release-reallocate
+- Proposed stage-aware reserve-release-reallocate policy
 
-Benchmarks:
+## Repository contents
 
-- 3 QuixBugs tasks
-- 2 HotpotQA tasks
+### Frozen design artifacts
+- `research/stage_aware/confirmatory_matrix_design_v1.yaml`
+- `research/stage_aware/confirmatory_manifest_v1.json`
+- `research/stage_aware/confirmatory_analysis_plan_v1.yaml`
+- `research/stage_aware/confirmatory_budget_regimes_v1.yaml`
+- `research/stage_aware/confirmatory_hotpot_selection_v1.yaml`
+- `research/stage_aware/confirmatory_hotpot100_tasks_v1.json`
+- `research/stage_aware/confirmatory_reference_budgets_v1.json`
 
-Exact run identities, revisions, budgets, and policies are stored in `pilot60_manifest.json`.
+### Analysis and figure scripts
+- `analysis/stage_aware/confirmatory_analyzer_v1.py`
+- `analysis/stage_aware/make_figure1_operating_envelope.py`
+- `analysis/stage_aware/make_figure2_primary_confirmatory.py`
+- `analysis/stage_aware/make_remaining_paper_figures.py`
 
-## Calibration
+### Frozen figures
+- `results/figures/figure1_qwen_operating_envelope.pdf`
+- `results/figures/figure2_primary_confirmatory_cross_model.pdf`
+- `results/figures/figure3_primary_resources_cross_model.pdf`
 
-Initial task budgets use the frozen outcome-blind calibration stored in:
+PNG versions are also included.
 
-`initial_budget_calibration.json`
+## Public result artifacts
 
-The calibration uses resource information rather than correctness or answer outcomes.
+### Pilot60 artifact
+- `FLLM_PILOT60_RESULTS_V4.zip`
+- `FLLM_PILOT60_RESULTS_V4_FREEZE_RECORD.txt`
 
-## Repository structure
+### Confirmatory artifact
+- `FLLM_CONFIRMATORY_RESULTS_V1_1C178171.zip`
+- `FLLM_CONFIRMATORY_RESULTS_V1_FREEZE_RECORD.txt`
+- `FLLM_CONFIRMATORY_ANALYSIS_V1_FREEZE_RECORD.txt`
 
-- `workflow_control/` â€” stage-aware controller and runtime
-- `benchmark/` â€” benchmark adapters and Pilot60 launcher
-- `analysis/stage_aware/` â€” analysis and diagnostics
-- `research/stage_aware/` â€” experiment configuration
-- `tests/stage_aware/` â€” stage-aware tests
-- `tests/workflow_control/` â€” controller and runtime tests
-- `agent/` â€” shared workflow components required by the runtime
+### Derived analysis artifact
+- `results/stage_aware_confirmatory_v1/confirmatory_analysis_v1.json`
+- `results/stage_aware_confirmatory_v1/exploratory_operating_envelope_v1.json`
 
-## Validation
+## Notes on interpretation
 
-The frozen pre-execution implementation passed:
+The confirmatory analysis distinguishes:
+- confirmatory pre-specified comparisons,
+- post hoc exploratory operating-envelope diagnostics.
 
-- pytest: test suite completed successfully; provenance-dependent Phase-0 tests are skipped when the optional source artifact is absent
-- Ruff: all checks passed
-- mypy: no issues in the configured scientific scope
+Exploratory operating-envelope outputs should not be interpreted as confirmatory causal evidence.
 
-Pilot60 manifest SHA-256:
+## Reproducibility
 
-`41a1dd14e5b322eea5476d07607c4e1773e2753d783d8a1a7514b383e5236bd2`
-
-## Installation
-
-Core development environment:
-
-`python -m pip install -e ".[dev]"`
-
-Local open-weight model environment:
-
-`python -m pip install -e ".[dev,local-models]"`
-
-Large model weights and local caches are not stored in this repository.
+Important frozen references are tracked through tags and SHA256 hashes in the corresponding freeze-record files.
 
 ## License
 
-MIT
+See `LICENSE`.

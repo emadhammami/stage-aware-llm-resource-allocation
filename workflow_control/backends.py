@@ -104,9 +104,12 @@ class _LoadedModelGuard:
 def _safetensors_loader_details(
     family: str, *, platform_name: str | None = None
 ) -> tuple[str, str | None]:
-    is_windows_gemma4 = family == "gemma4" and (platform_name or sys.platform) == "win32"
-    if is_windows_gemma4:
-        return "pread", "windows_gemma4_pread"
+    is_windows_pilot_model = (
+        family in {"qwen3", "llama", "gemma4"}
+        and (platform_name or sys.platform) == "win32"
+    )
+    if is_windows_pilot_model:
+        return "pread", "windows_safetensors_pread"
     return "mmap", None
 
 
@@ -319,12 +322,25 @@ class HuggingFaceBackend:
         output_tokens = int(output_ids.shape[-1])
         text = self.tokenizer.decode(output_ids, skip_special_tokens=True)
         rendered = self.counter.render(messages)
-        finish_reason = "length" if output_tokens == max_output_tokens else "stop"
+        eos_value = getattr(self.model.generation_config, "eos_token_id", None)
+        if eos_value is None:
+            eos_value = getattr(self.tokenizer, "eos_token_id", None)
+        eos_ids = (
+            {eos_value}
+            if isinstance(eos_value, int)
+            else ({int(value) for value in eos_value} if eos_value is not None else set())
+        )
+        last_token = int(output_ids[-1].item()) if output_tokens else None
+        finish_reason = (
+            "eos"
+            if last_token is not None and last_token in eos_ids
+            else ("length" if output_tokens >= max_output_tokens else "stop")
+        )
         usage = ProviderUsage(
             input_tokens=input_length,
             output_tokens=output_tokens,
             finish_reason=finish_reason,
-            mapped_finish_class=finish_reason,
+            mapped_finish_class=_map_finish_reason(finish_reason),
             latency_seconds=time.perf_counter() - started,
         )
         metadata = self.metadata(rendered_prompt=rendered)
@@ -452,9 +468,11 @@ def _package_version(name: str) -> str | None:
 def _map_finish_reason(reason: str | None) -> str:
     normalized = (reason or "").upper()
     if normalized in {"STOP", "EOS", "END_TURN"}:
-        return "stop"
+        return "natural"
     if normalized in {"MAX_TOKENS", "LENGTH"}:
         return "length"
     if normalized in {"SAFETY", "RECITATION", "PROHIBITED_CONTENT", "BLOCKLIST"}:
         return "safety"
+    if normalized in {"ERROR", "PROVIDER_ERROR", "INTERNAL_ERROR"}:
+        return "error"
     return "unknown"

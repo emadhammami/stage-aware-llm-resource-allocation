@@ -1,0 +1,54 @@
+﻿schema_version: "1.0.0"
+budget_regime_id: "confirmatory-budget-regimes-v1"
+protocol: "confirmatory-v1"
+status: "DEFINED_BEFORE_CONFIRMATORY_MODEL_RUNS"
+
+reference_geometry:
+  commit: "b1920604d2b55ff2a93c224a674f315fc636df50"
+  canonical_json_sha256: "E1A8A0D38B8F93154E77F2FFB8F9CC54A64CB00571B44825E526CF66159FC178"
+  task_model_cells: 420
+
+calibration:
+  rho_star: 0.2963554987212276
+  source: "frozen historical resource-only calibration"
+  outcome_recalibration_allowed: false
+
+regimes:
+  constrained:
+    formula: "Bmin"
+    relative_position: 0.0
+    interpretation: "minimum structurally feasible reference envelope"
+  transition:
+    formula: "B0 = ceil(Bmin + rho_star * (Bsoft - Bmin))"
+    relative_position: 0.2963554987212276
+    interpretation: "historically calibrated resource transition point"
+  relaxed:
+    formula: "Bsoft"
+    relative_position: 1.0
+    interpretation: "soft-target reference envelope"
+
+benchmark_geometry:
+  hotpotqa:
+    soft_minus_min: 1632
+    transition_increment: 484
+  quixbugs:
+    soft_minus_min: 2176
+    transition_increment: 645
+
+comparison_invariants:
+  same_budget_across_policies_within_task_model_condition: true
+  task_model_specific_native_token_geometry: true
+  same_relative_resource_condition_across_models: true
+  absolute_global_1k_2k_4k_budgets_used: false
+
+information_isolation:
+  task_accuracy_used: false
+  exact_match_used: false
+  token_f1_used: false
+  functional_correctness_used: false
+  verifier_outcome_used: false
+  pilot60_outcomes_used: false
+
+execution:
+  model_calls_performed_for_regime_definition: 0
+  final_run_matrix_frozen: false

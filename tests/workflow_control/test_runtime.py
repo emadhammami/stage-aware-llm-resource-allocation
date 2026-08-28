@@ -25,7 +25,7 @@ class ScriptedBackend:
         text = self.outputs.pop(0)
         input_tokens = self.count_prompt(messages)[0]
         output_tokens = min(max_output_tokens, max(1, len(text) // 4))
-        usage = ProviderUsage(input_tokens, output_tokens, "stop", "stop", 0.0)
+        usage = ProviderUsage(input_tokens, output_tokens, "stop", "natural", 0.0)
         metadata = ModelMetadata(
             model_id=self.model_id,
             model_revision="fixture",
@@ -58,9 +58,9 @@ def test_scripted_hotpot_workflow_takes_sufficient_branch_without_gold() -> None
         stage_specs=HOTPOT_STAGE_SPECS,
         prompt_estimates=prompts,
     )
-    backend = ScriptedBackend(["intent one; intent two", "ANSWER: fixture", "SUFFICIENT"])
+    backend = ScriptedBackend(["intent one; intent two", "FINAL_ANSWER: fixture\nEVIDENCE: fixture", "VERDICT: SUFFICIENT\nREASON: supported"])
     result = run_hotpot_workflow(backend=backend, controller=controller, task=task)
     assert len(result["stages"]) == 3
-    assert result["candidate_answer"] == "ANSWER: fixture"
+    assert result["candidate_answer"] == "fixture"
     assert result["run_end"]["budget_violation_count"] == 0
     assert any(event["event_type"] == "RESERVATION_RELEASE" for event in controller.state.events)

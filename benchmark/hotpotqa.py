@@ -156,3 +156,14 @@ class DeterministicRetriever:
             (document for document in self.ranked(query) if document.title not in seen_titles),
             None,
         )
+
+    def next_unseen_many(
+        self, query: str, seen_titles: set[str], *, limit: int = 2
+    ) -> tuple[EvidenceDocument, ...]:
+        if limit <= 0:
+            raise ValueError("limit must be positive")
+        return tuple(
+            document
+            for document in self.ranked(query)
+            if document.title not in seen_titles
+        )[:limit]

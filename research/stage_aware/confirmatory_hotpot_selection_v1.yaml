@@ -1,0 +1,101 @@
+﻿schema_version: "1.0.0"
+selection_id: "confirmatory-hotpot100-selection-v1"
+protocol: "confirmatory-v1"
+status: "RULE_DEFINED_BEFORE_SELECTED_IDS"
+
+dataset:
+  path: "data/hotpotqa/hotpot_dev_distractor_v1.json"
+  sha256: "4e9ecb5c8d3b719f624d66b60f8d56bf227f03914f5f0753d6fa1b359d7104ea"
+
+selection_seed: "FLLM2026-RRR-1"
+target_tasks: 100
+
+eligibility:
+  allowed_question_types: ["bridge", "comparison"]
+  exact_context_count: 10
+  require_parseable_contexts: true
+  require_nonempty_normalized_answer: true
+  answer_normalization: "lowercase; remove punctuation; remove articles a/an/the; normalize whitespace"
+  require_deterministic_retriever_construction: true
+  initial_retrieval_documents: 2
+  recovery_additional_unseen_documents: 2
+  expanded_total_documents: 4
+  require_distinct_initial_document_titles: true
+  require_recovery_documents_unseen_and_distinct: true
+  require_prompt_fit_for_every_model_and_stage: true
+  prompt_fit_rule: "native_chat_prompt_tokens + frozen_stage_hard_output <= pinned_model_context_window"
+
+context_length_stratification:
+  metric: "lexical token count over all supplied context documents"
+  token_regex: "[A-Za-z0-9]+"
+  quartiles_within_question_type: true
+  ordering: ["context_length_tokens_ascending", "task_id_ascending"]
+  quartile_formula: "min(4, floor(index * 4 / n) + 1), using zero-based index within question type"
+
+quota_allocation:
+  method: "Hamilton largest remainder proportional allocation"
+  population_basis: "eligible task count in each question_type x quartile stratum"
+  target: 100
+  remainder_tie_break: ["question_type_ascending", "quartile_ascending"]
+
+within_stratum_selection:
+  ordering_primary: "SHA256(selection_seed + ':' + task_id) ascending"
+  ordering_secondary: "task_id ascending"
+  outcome_information_used: false
+
+pinned_models:
+  - model_id: "Qwen/Qwen3-8B"
+    tokenizer_revision: "b968826d9c46dd6066d109eabc6255188de91218"
+    context_window: 40960
+  - model_id: "meta-llama/Llama-3.1-8B-Instruct"
+    tokenizer_revision: "0e9e39f249a16976918f6564b8830bc894c89659"
+    context_window: 131072
+  - model_id: "google/gemma-4-E4B-it"
+    tokenizer_revision: "ee0ef6023621cff504d758262d4e04895a5af4a2"
+    context_window: 131072
+
+frozen_audit:
+  total_rows: 7405
+  eligible_before_prompt_fit: 7343
+  prompt_fit_failures: 0
+  final_eligible: 7343
+  exclusions:
+    not_exactly_10_contexts: 60
+    empty_normalized_answer: 2
+  eligible_by_type:
+    bridge: 5899
+    comparison: 1444
+  strata:
+    bridge_Q1: 1475
+    bridge_Q2: 1475
+    bridge_Q3: 1475
+    bridge_Q4: 1474
+    comparison_Q1: 361
+    comparison_Q2: 361
+    comparison_Q3: 361
+    comparison_Q4: 361
+  hamilton_100_quotas:
+    bridge_Q1: 20
+    bridge_Q2: 20
+    bridge_Q3: 20
+    bridge_Q4: 20
+    comparison_Q1: 5
+    comparison_Q2: 5
+    comparison_Q3: 5
+    comparison_Q4: 5
+
+information_isolation:
+  task_accuracy_used: false
+  exact_match_used: false
+  token_f1_used: false
+  verifier_outcome_used: false
+  pilot60_task_outcomes_used: false
+  supporting_facts_used: false
+  gold_answer_usage: "only nonempty-normalized eligibility; answer value is not used for stratification or ranking"
+
+execution_audit:
+  tokenizer_only: true
+  model_weights_loaded: false
+  model_generations: false
+
+selected_task_ids_in_this_file: false

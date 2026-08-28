@@ -4,7 +4,12 @@ import json
 from dataclasses import asdict, dataclass, field
 from typing import Any, Mapping
 
-from workflow_control.routes import RouteNode, maximal_remaining_path
+from workflow_control.routes import (
+    RouteNode,
+    maximal_remaining_path,
+    optional_stages,
+    topological_depths,
+)
 from workflow_control.types import Policy, PromptEstimate, StageSpec
 
 
@@ -46,6 +51,7 @@ class ControllerState:
     b0: int
     consumed: int = 0
     completed_stages: set[str] = field(default_factory=set)
+    unreachable_stages: set[str] = field(default_factory=set)
     reservations: dict[str, Reservation] = field(default_factory=dict)
     debited_call_ids: set[str] = field(default_factory=set)
     prepared: dict[str, Allocation] = field(default_factory=dict)
@@ -78,6 +84,8 @@ class BudgetController:
         self.stage_specs = dict(stage_specs)
         self.prompt_estimates = dict(prompt_estimates)
         self.fixed_reservation_fraction = fixed_reservation_fraction
+        self._topological_depths = topological_depths(route)
+        self._optional_stages = optional_stages(route)
         self.state = ControllerState(
             schema_version=self.SCHEMA_VERSION,
             task_id=task_id,
@@ -141,6 +149,7 @@ class BudgetController:
                 amount_after=amount,
             )
 
+
     def prepare_call(self, call_id: str, stage_id: str, exact_prompt_tokens: int) -> Allocation:
         if call_id in self.state.debited_call_ids:
             raise ValueError(f"call {call_id} was already debited")
@@ -174,33 +183,15 @@ class BudgetController:
         spec = self.stage_specs[stage_id]
         budget_before = self.remaining
         requirements = self._minimum_requirements()
-        excluded = self.state.completed_stages | {stage_id}
+        excluded = self.state.completed_stages | self.state.unreachable_stages | {stage_id}
         continuation_path = maximal_remaining_path(self.route, requirements, excluded)
         predicted_future = {
             future: self.prompt_estimates[future].effective_tokens
             for future in sorted(continuation_path)
         }
-        protected = 0
-        if self.state.policy == Policy.PROPOSED:
-            for future in sorted(continuation_path):
-                amount = requirements[future]
-                self._create_or_resize_reservation(future, amount)
-                protected += amount
-        elif self.state.policy == Policy.FIXED_RESERVATION and continuation_path:
-            has_terminal = any(
-                stage in continuation_path
-                for stage in ("critic", "terminal_verifier", "verifier", "verify")
-            )
-            if has_terminal:
-                target = int(self.state.b0 * self.fixed_reservation_fraction)
-                protected = min(
-                    target,
-                    max(0, budget_before - exact_prompt_tokens - spec.minimum_output),
-                )
 
-        required = exact_prompt_tokens + spec.minimum_output + protected
-        shortfall = required > budget_before
-        if shortfall:
+        current_required = exact_prompt_tokens + spec.minimum_output
+        if current_required > budget_before:
             allocation = Allocation(
                 call_id=call_id,
                 stage_id=stage_id,
@@ -211,12 +202,12 @@ class BudgetController:
                 current_min=spec.minimum_output,
                 current_soft=spec.soft_output,
                 current_hard=spec.hard_output,
-                protected_continuation=protected,
+                protected_continuation=0,
                 selected_max_output=0,
                 uncommitted_capacity=max(0, budget_before - exact_prompt_tokens),
                 structural_shortfall=True,
-                shortfall_cause="exact_prompt_or_continuation_exceeds_prediction",
-                required_minimum=required,
+                shortfall_cause="current_minimum_infeasible",
+                required_minimum=current_required,
                 reallocation_sources=tuple(self.state.released_sources),
             )
             self.state.shortfall_count += 1
@@ -229,11 +220,96 @@ class BudgetController:
                 prediction_error_tokens=exact_prompt_tokens
                 - prediction.predicted_prompt_tokens,
                 remaining_budget=budget_before,
-                required_minimum=required,
+                required_minimum=current_required,
                 cause=allocation.shortfall_cause,
             )
+            self.state.prepared[call_id] = allocation
+            return allocation
+
+        protected = 0
+        desired_protected = 0
+        reservation_shortfall = False
+
+        if self.state.policy == Policy.PROPOSED:
+            desired_protected = sum(requirements[future] for future in continuation_path)
+            reserve_capacity = budget_before - current_required
+            reservation_shortfall = desired_protected > reserve_capacity
+
+            remaining_paths = tuple(path - excluded for path in self.route.paths())
+            if remaining_paths:
+                unavoidable = set(remaining_paths[0])
+                for path in remaining_paths[1:]:
+                    unavoidable.intersection_update(path)
+            else:
+                unavoidable = set()
+
+            terminal_stages = {"critic", "terminal_verifier", "verifier", "verify"}
+            priority = sorted(
+                continuation_path,
+                key=lambda future: (
+                    (
+                        0
+                        if future in unavoidable
+                        else 1
+                        if future in terminal_stages
+                        else 2
+                    ),
+                    self._topological_depths.get(
+                        future, len(self._topological_depths)
+                    ),
+                    1 if future in self._optional_stages else 0,
+                    future,
+                ),
+            )
+
+            reserve_left = reserve_capacity
+            for future in priority:
+                desired = requirements[future]
+                funded = desired if not reservation_shortfall else min(desired, reserve_left)
+                existing = self.state.reservations.get(f"minimum:{future}")
+                if funded > 0 or (
+                    existing is not None and existing.status == "CREATE"
+                ):
+                    self._create_or_resize_reservation(future, funded)
+                protected += funded
+                reserve_left -= funded
+
+            if reservation_shortfall:
+                self.state.shortfall_count += 1
+                self._emit(
+                    "RESERVATION_SHORTFALL",
+                    stage_id=stage_id,
+                    call_id=call_id,
+                    cause="reservation_shortfall_best_effort",
+                    full_branch_protection=False,
+                    required_reserve=desired_protected,
+                    funded_reserve=protected,
+                    reservation_shortfall_tokens=desired_protected - protected,
+                    remaining_budget=budget_before,
+                    exact_prompt_tokens=exact_prompt_tokens,
+                    current_minimum=spec.minimum_output,
+                 )
+        elif self.state.policy == Policy.FIXED_RESERVATION and continuation_path:
+            has_terminal = any(
+                stage in continuation_path
+                for stage in ("critic", "terminal_verifier", "verifier", "verify")
+            )
+            if has_terminal:
+                target = int(self.state.b0 * self.fixed_reservation_fraction)
+                protected = min(
+                    target,
+                    max(0, budget_before - exact_prompt_tokens - spec.minimum_output),
+                )
+
+        full_required = current_required + (
+            desired_protected if self.state.policy == Policy.PROPOSED else protected
+        )
+        available_output = budget_before - exact_prompt_tokens - protected
+
+        if reservation_shortfall:
+            selected = spec.minimum_output
+            shortfall_cause = "reservation_shortfall_best_effort"
         else:
-            available_output = budget_before - exact_prompt_tokens - protected
             if self.state.policy == Policy.LEGACY_STATIC:
                 target = spec.legacy_output
             elif self.state.policy in {Policy.GREEDY, Policy.FIXED_RESERVATION}:
@@ -241,42 +317,51 @@ class BudgetController:
             else:
                 target = spec.soft_output
             selected = min(target, available_output)
-            uncommitted = max(0, budget_before - exact_prompt_tokens - protected - selected)
-            allocation = Allocation(
-                call_id=call_id,
-                stage_id=stage_id,
-                admitted=True,
-                budget_before=budget_before,
-                exact_current_prompt=exact_prompt_tokens,
-                predicted_future_prompts=predicted_future,
-                current_min=spec.minimum_output,
-                current_soft=spec.soft_output,
-                current_hard=spec.hard_output,
-                protected_continuation=protected,
-                selected_max_output=selected,
-                uncommitted_capacity=uncommitted,
-                structural_shortfall=False,
-                shortfall_cause=None,
-                required_minimum=required,
-                reallocation_sources=tuple(self.state.released_sources),
-            )
+            shortfall_cause = None
+
+        uncommitted = max(
+            0, budget_before - exact_prompt_tokens - protected - selected
+        )
+        allocation = Allocation(
+            call_id=call_id,
+            stage_id=stage_id,
+            admitted=True,
+            budget_before=budget_before,
+            exact_current_prompt=exact_prompt_tokens,
+            predicted_future_prompts=predicted_future,
+            current_min=spec.minimum_output,
+            current_soft=spec.soft_output,
+            current_hard=spec.hard_output,
+            protected_continuation=protected,
+            selected_max_output=selected,
+            uncommitted_capacity=uncommitted,
+            structural_shortfall=False,
+            shortfall_cause=shortfall_cause,
+            required_minimum=full_required,
+            reallocation_sources=tuple(self.state.released_sources),
+        )
+        allocation_event = asdict(allocation)
+        allocation_event["full_branch_protection"] = (
+            not reservation_shortfall
+            if self.state.policy == Policy.PROPOSED
+            else None
+        )
+        self._emit(
+            "ALLOCATION",
+            call_id=call_id,
+            stage_id=stage_id,
+            allocation=allocation_event,
+        )
+        if self.state.released_sources:
             self._emit(
-                "ALLOCATION",
-                call_id=call_id,
-                stage_id=stage_id,
-                allocation=asdict(allocation),
+                "CAPACITY_REALLOCATE",
+                capacity_action="REALLOCATE",
+                source_ids=list(self.state.released_sources),
+                destination_stage=stage_id,
             )
-            if self.state.released_sources:
-                self._emit(
-                    "CAPACITY_REALLOCATE",
-                    capacity_action="REALLOCATE",
-                    source_ids=list(self.state.released_sources),
-                    destination_stage=stage_id,
-                )
-                self.state.released_sources.clear()
+            self.state.released_sources.clear()
         self.state.prepared[call_id] = allocation
         return allocation
-
     def finish_call(
         self,
         call_id: str,
@@ -355,6 +440,7 @@ class BudgetController:
 
     def release_unreachable(self, reachable_stages: set[str]) -> int:
         released = 0
+        self.state.unreachable_stages.update(set(self.stage_specs) - reachable_stages)
         for reservation in self.state.reservations.values():
             if reservation.status == "CREATE" and reservation.stage_id not in reachable_stages:
                 reservation.status = "RELEASE"
@@ -369,23 +455,38 @@ class BudgetController:
                 )
         return released
 
-    def finalize(self) -> dict[str, Any]:
+    def finalize(self, *, normal_completion: bool = True) -> dict[str, Any]:
+        active = [
+            reservation
+            for reservation in self.state.reservations.values()
+            if reservation.status == "CREATE"
+        ]
+        for reservation in active:
+            if normal_completion:
+                reservation.status = "RELEASE"
+                self._emit(
+                    "RESERVATION_RELEASE",
+                    reservation_action="RELEASE",
+                    reservation_id=reservation.reservation_id,
+                    stage_id=reservation.stage_id,
+                    amount=reservation.amount,
+                )
+            else:
+                reservation.status = "STRAND"
+                self._emit(
+                    "RESERVATION_STRAND",
+                    reservation_action="STRAND",
+                    reservation_id=reservation.reservation_id,
+                    stage_id=reservation.stage_id,
+                    amount=reservation.amount,
+                )
         unresolved = [
             reservation.reservation_id
             for reservation in self.state.reservations.values()
             if reservation.status == "CREATE"
         ]
-        for reservation_id in unresolved:
-            reservation = self.state.reservations[reservation_id]
-            reservation.status = "STRAND"
-            self._emit(
-                "RESERVATION_STRAND",
-                reservation_action="STRAND",
-                reservation_id=reservation_id,
-                stage_id=reservation.stage_id,
-                amount=reservation.amount,
-            )
         summary = {
+            "normal_completion": normal_completion,
             "total_consumed": self.state.consumed,
             "B0": self.state.b0,
             "unused_capacity": self.remaining,
@@ -400,6 +501,7 @@ class BudgetController:
         data = asdict(self.state)
         data["policy"] = self.state.policy.value
         data["completed_stages"] = sorted(self.state.completed_stages)
+        data["unreachable_stages"] = sorted(self.state.unreachable_stages)
         data["debited_call_ids"] = sorted(self.state.debited_call_ids)
         return json.dumps(data, sort_keys=True)
 
@@ -411,6 +513,7 @@ class BudgetController:
             raise ValueError("resume configuration mismatch")
         data["policy"] = Policy(data["policy"])
         data["completed_stages"] = set(data["completed_stages"])
+        data["unreachable_stages"] = set(data.get("unreachable_stages", []))
         data["debited_call_ids"] = set(data["debited_call_ids"])
         data["reservations"] = {
             key: Reservation(**value) for key, value in data["reservations"].items()

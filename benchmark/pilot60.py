@@ -16,7 +16,11 @@ from workflow_control.backends import (
     ModelBackend,
 )
 from workflow_control.controller import BudgetController
-from workflow_control.runtime import run_code_workflow, run_hotpot_workflow
+from workflow_control.runtime import (
+    StructuralShortfallError,
+    run_code_workflow,
+    run_hotpot_workflow,
+)
 from workflow_control.specs import CODE_ROUTE, CODE_STAGE_SPECS, HOTPOT_ROUTE, HOTPOT_STAGE_SPECS
 from workflow_control.telemetry import AppendOnlyTelemetry
 from workflow_control.types import Policy, PromptEstimate
@@ -204,19 +208,28 @@ def execute(manifest: dict[str, Any], root: Path, output: Path) -> None:
                         },
                     }
                 )
-                if run["task_id"].startswith("quixbugs:"):
-                    result = run_code_workflow(
-                        backend=backend,
-                        controller=controller,
-                        benchmark=quixbugs,
-                        task_id=run["task_id"].partition(":")[2],
-                    )
-                else:
-                    result = run_hotpot_workflow(
-                        backend=backend,
-                        controller=controller,
-                        task=hotpot.get(run["task_id"].partition(":")[2]),
-                    )
+                try:
+                    if run["task_id"].startswith("quixbugs:"):
+                        result = run_code_workflow(
+                            backend=backend,
+                            controller=controller,
+                            benchmark=quixbugs,
+                            task_id=run["task_id"].partition(":")[2],
+                        )
+                    else:
+                        result = run_hotpot_workflow(
+                            backend=backend,
+                            controller=controller,
+                            task=hotpot.get(run["task_id"].partition(":")[2]),
+                        )
+                except StructuralShortfallError as error:
+                    result = {
+                        "task_id": run["task_id"],
+                        "terminal_status": "structural_shortfall",
+                        "classification": "scientific",
+                        "shortfall": error.to_dict(),
+                        "run_end": controller.finalize(normal_completion=False),
+                    }
                 for event in controller.state.events:
                     telemetry.append({**event, "run_id": run["run_id"]})
                 telemetry.append(
