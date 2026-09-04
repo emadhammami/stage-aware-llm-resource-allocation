@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[2]
-FIGDIR = ROOT / "results" / "figures"
+FIGDIR = ROOT / "results" / "figures" / "r3tune_publication"
 FIGDIR.mkdir(parents=True, exist_ok=True)
 
 CONFIRMATORY = ROOT / "results" / "stage_aware_confirmatory_v1" / "confirmatory_analysis_v1.json"
