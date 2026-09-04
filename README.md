@@ -1,4 +1,4 @@
-# Stage-Aware LLM Resource Allocation
+# R3Tune: Stage-Aware Token Budgeting for Multi-Stage LLM Workflows
 
 Reproducibility artifact for an empirical study of stage-aware resource allocation in multi-stage LLM workflows.
 
@@ -6,14 +6,14 @@ Reproducibility artifact for an empirical study of stage-aware resource allocati
 
 This repository contains code, frozen manifests, pre-specified analysis inputs, selected result artifacts, figure-generation scripts, and public releases for a study of budgeted multi-stage LLM workflows.
 
-The proposed controller is a **Reserve-Release-Reallocate (RRR)** policy that:
+The proposed controller is **R3Tune**, a deterministic, training-free **Reserve-Release-Reallocate** policy that:
 
 - protects minimum budget required for reachable downstream stages,
 - releases reservations for stages that become unreachable,
 - returns unused capacity,
 - reallocates available budget while preserving the hard task-level budget invariant.
 
-The confirmatory study uses a quality guardrail: RRR is not required to outperform the legacy policy on accuracy, but it must preserve reliable correctness within a pre-specified non-inferiority margin.
+The confirmatory study uses a quality guardrail: R3Tune is not required to outperform the legacy policy on accuracy, but it must preserve reliable correctness within a pre-specified non-inferiority margin.
 
 ## Study components
 
@@ -33,7 +33,7 @@ A frozen 4,000-run evaluation with a design and analysis plan defined before con
 
 - 4,000 completed runs
 - 3 open-weight model families
-- primary comparison: Legacy static allocation vs RRR
+- primary comparison: Legacy static allocation vs R3Tune
 - primary benchmark: HotpotQA
 - primary budget condition: transition
 - 100 HotpotQA tasks
@@ -48,7 +48,7 @@ The raw confirmatory results were frozen before outcome analysis.
 
 The pre-specified primary endpoint was **reliable correctness**. Repetitions were aggregated within task before task-level inference, and model-level effects were macro-averaged across the three models.
 
-| Metric | Legacy | RRR | Absolute change | 95% CI for change | Decision |
+| Metric | Legacy | R3Tune | Absolute change | 95% CI for change | Decision |
 | --- | ---: | ---: | ---: | ---: | --- |
 | Reliable correctness | 31.00% | 31.33% | +0.33 pp | [0.00, +1.00] pp | Non-inferior; not superior |
 
@@ -56,7 +56,7 @@ The lower confidence bound is above the pre-specified -5 pp non-inferiority marg
 
 ### Reliable correctness by model
 
-| Model | Legacy | RRR | Change |
+| Model | Legacy | R3Tune | Change |
 | --- | ---: | ---: | ---: |
 | Qwen/Qwen3-8B | 36.00% | 36.00% | 0.00 pp |
 | google/gemma-4-E4B-it | 32.00% | 32.00% | 0.00 pp |
@@ -64,7 +64,7 @@ The lower confidence bound is above the pre-specified -5 pp non-inferiority marg
 
 ### Primary resource measurements
 
-| Resource metric | Legacy | RRR | Change |
+| Resource metric | Legacy | R3Tune | Change |
 | --- | ---: | ---: | ---: |
 | Mean consumed tokens | 1388.17 | 1389.27 | +1.10 |
 | Mean unused capacity | 1341.21 | 1340.10 | -1.10 |
@@ -73,7 +73,7 @@ The lower confidence bound is above the pre-specified -5 pp non-inferiority marg
 | Structural-shortfall rate | 9.00% | 8.33% | -0.67 pp |
 | Reservation-shortfall rate | 0.00% | 7.33% | +7.33 pp |
 
-At the primary transition-budget condition, RRR preserved quality but did **not** produce a material reduction in token consumption. Resource and stage-reachability effects were small and model-dependent.
+At the primary transition-budget condition, R3Tune preserved quality but did **not** produce a material reduction in token consumption. Resource and stage-reachability effects were small and model-dependent.
 
 ## Models
 
@@ -88,7 +88,11 @@ These are referred to as **open-weight models**; their individual licenses and u
 - Legacy static allocation
 - Greedy allocation
 - Fixed reservation
-- Proposed Reserve-Release-Reallocate (RRR) policy
+- R3Tune (Reserve-Release-Reallocate)
+
+## Naming and provenance
+
+The manuscript-facing name of the controller is **R3Tune** (Reserve-Release-Reallocate). Historical frozen artifacts may retain internal identifiers such as `RRR`, `rrr`, or `proposed`. These identifiers are intentionally preserved so that frozen results, hashes, releases, and provenance remain unchanged.
 
 ## Repository contents
 
@@ -108,6 +112,7 @@ These are referred to as **open-weight models**; their individual licenses and u
 - `analysis/stage_aware/make_figure1_operating_envelope.py`
 - `analysis/stage_aware/make_figure2_primary_confirmatory.py`
 - `analysis/stage_aware/make_remaining_paper_figures.py`
+- `analysis/stage_aware/make_r3tune_ieee_figures.py` (publication-facing R3Tune figures generated from unchanged frozen result inputs; outputs are written under `results/figures/r3tune_publication/`)
 
 ### Frozen figures
 
@@ -115,7 +120,17 @@ These are referred to as **open-weight models**; their individual licenses and u
 - `results/figures/figure2_primary_confirmatory_cross_model.pdf`
 - `results/figures/figure3_primary_resources_cross_model.pdf`
 
-PNG versions are also included.
+PNG versions are also included. These paths retain the historically frozen figure files and hashes.
+
+### R3Tune publication figures
+
+The manuscript-facing figures use the R3Tune terminology and are stored separately so that the frozen figure artifacts and their recorded hashes remain unchanged:
+
+- `results/figures/r3tune_publication/figure1_qwen_operating_envelope.pdf`
+- `results/figures/r3tune_publication/figure2_primary_confirmatory_cross_model.pdf`
+- `results/figures/r3tune_publication/figure3_primary_resources_cross_model.pdf`
+
+PNG versions are also included. These publication-facing figures are generated from the same frozen result inputs; only presentation terminology is changed.
 
 **Figure interpretation**
 
@@ -197,7 +212,7 @@ Get-FileHash .\FLLM_CONFIRMATORY_RESULTS_V1_1C178171.zip -Algorithm SHA256
 
 ## Interpretation boundary
 
-The confirmatory result supports the claim that RRR **preserved reliable correctness within the pre-specified non-inferiority margin** at the primary transition-budget condition.
+The confirmatory result supports the claim that R3Tune **preserved reliable correctness within the pre-specified non-inferiority margin** at the primary transition-budget condition.
 
 It does **not** support a claim of general accuracy superiority or general token-efficiency superiority.
 
