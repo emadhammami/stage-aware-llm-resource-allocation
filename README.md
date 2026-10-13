@@ -1,5 +1,7 @@
 # R3Tune: Stage-Aware Token Budgeting for Multi-Stage LLM Workflows
 
+**Publication status:** Accepted full paper (oral presentation), IEEE FLLM 2026, Barcelona, 17–20 November 2026.
+
 Reproducibility artifact for an empirical study of stage-aware resource allocation in multi-stage LLM workflows.
 
 ## Overview
